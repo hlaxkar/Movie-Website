@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800&display=swap');
 * {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Libre Franklin", sans-serif;
-font-weight: 200;
+    font-weight: 200;
 }
-p{
+
+p {
     font-family: "Chivo", sans-serif;
     font-weight: 300;
 }
+
 body {
     background: black;
 }
@@ -28,13 +31,14 @@ body {
 
 .big-poster {
     background-size: cover;
-   
     -webkit-mask-image: linear-gradient(to top, transparent 15%, black 45%);
-    background: url("../img/john1.jpg") center no-repeat;
+    background: center no-repeat;
     box-shadow: 0 0 8px 8px black inset;
     height: 650px;
     overflow: hidden;
     width: auto;
+    background-size: 100%;
+
 }
 
 .inner-Header {
@@ -50,9 +54,11 @@ body {
     margin-right: 20px;
     padding: 0 10px;
 }
-.Cast li{
+
+.Cast li {
     list-style: none;
 }
+
 .searchbar {
     align-content: center;
     color: white;
@@ -151,26 +157,58 @@ body {
     width: 100%;
     border-bottom: rgba(255, 255, 255, 0.651) solid 1px;
 }
-.similarmovies{
-padding-top: 10px;
+
+.similarmovies {
+    padding: 10px;
     margin: auto;
+    border-bottom: 1px solid white;
 }
-.similarmovies hr{
+
+.similarmovies hr {
     background-color: rgba(255, 255, 255, 0.651);
 }
-.similarposters{
-    width: 14pc;
-    height: 20em;
+
+.similarposters {
+    display: flex;
+    flex-direction: column;
     border: none;
     border-radius: 1em;
     margin-right: 15px;
+}
 
+.similarposters img {
+    width: 150px;
+    border-radius: 1em;
+    height: 220px;
 }
-.similarposters img{
-    width: inherit;
-    height: inherit;
-}
-.suggestions{
-width: 100%;
+
+.suggestions {
+    width: 100%;
+    
+    justify-content: center;
+    flex-wrap: wrap;
     display: inline-flex;
+}
+
+figcaption {
+    margin-top: -50px;
+}
+
+i {
+    padding: 9px;
+}
+footer{
+    background-color: #2b2b2b;
+    color: white;
+    text-align: center;
+}
+.caption{
+    font-weight: 600;
+    font-family: "Libre Franklin", sans-serif;
+    padding-top: 11pt;
+    font-size: 9pt;
+    padding-left: 1px;
+}
+.caption span{
+    float: right;
 }
