@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Libre Franklin", sans-serif;
+font-weight: 200;
+}
+p{
+    font-family: "Chivo", sans-serif;
+    font-weight: 300;
+}
+body {
+    background: black;
+}
+
+.header {
+    background-color: #00000f57;
+    color: white;
+    height: 65px;
+    z-index: 1;
+    position: relative;
+}
+
+.big-poster {
+    background-size: cover;
+   
+    -webkit-mask-image: linear-gradient(to top, transparent 15%, black 45%);
+    background: url("../img/john1.jpg") center no-repeat;
+    box-shadow: 0 0 8px 8px black inset;
+    height: 650px;
+    overflow: hidden;
+    width: auto;
+}
+
+.inner-Header {
+    background-color: transparent;
+    margin: 0 10%;
+    width: 80%;
+}
+
+.header-links {
+    border-left: 1px solid white;
+    display: inline-flex;
+    float: right;
+    margin-right: 20px;
+    padding: 0 10px;
+}
+.Cast li{
+    list-style: none;
+}
+.searchbar {
+    align-content: center;
+    color: white;
+    display: flex;
+    margin-left: 30%;
+    width: 40%;
+}
+
+.Search {
+    background: #00000f57;
+    background: transparent;
+    border-bottom: 1px solid white;
+    border: 0;
+    color: white;
+    font-size: 15px;
+    height: 50px;
+    text-align: center;
+    width: 90%;
+}
+
+.Search:focus {
+    background: white;
+}
+
+.logo {
+    float: left;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.poster {
+    max-width: 100%;
+    height: auto;
+}
+
+.poster-container {
+    border-radius: 5px;
+    margin-left: 0;
+    max-width: 180px;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.Poster img {
+    width: 100%;
+}
+
+.info {
+    position: relative;
+    grid-template: 30% 70%;
+    margin-top: -15%;
+    height: auto;
+    padding: 0 15%;
+    color: white;
+    display: grid;
+    background: linear-gradient( 1deg, #0000009c, transparent);
+}
+
+.info-box {
+    /* display: inline-flex; */
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.info-first {
+    margin-top: 5%;
+}
+
+.info-top {
+    padding-bottom: 1rem;
+    border-bottom: rgba(255, 255, 255, 0.651) solid 1px;
+}
+
+.title-buttons {
+    background: #8c8c8c47;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    float: right;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 1rem;
+    margin-top: 1.09em;
+    padding: 5px 10px;
+}
+
+.title-buttons a {
+    text-decoration: none;
+    color: white;
+}
+
+.Movieinfo {
+    width: 100%;
+    border-bottom: rgba(255, 255, 255, 0.651) solid 1px;
+}
+.similarmovies{
+padding-top: 10px;
+    margin: auto;
+}
+.similarmovies hr{
+    background-color: rgba(255, 255, 255, 0.651);
+}
+.similarposters{
+    width: 14pc;
+    height: 20em;
+    border: none;
+    border-radius: 1em;
+    margin-right: 15px;
+
+}
+.similarposters img{
+    width: inherit;
+    height: inherit;
+}
+.suggestions{
+width: 100%;
+    display: inline-flex;
+}
