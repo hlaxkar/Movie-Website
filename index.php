@@ -5,7 +5,7 @@ $base_url = '/discover/movie?sort_by=popularity.desc&';
 $similar='https://api.themoviedb.org/3/movie/550/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1
 ';
 
-$movie_url = '/movie/45815?';
+$movie_url = '/movie/4515?';
 $lang='&language=en-US';
 
 
@@ -33,25 +33,7 @@ $lang='&language=en-US';
     //print_r($response2);
     $bg = 'https://image.tmdb.org/t/p/original'.$r["backdrop_path"] ;
 
-
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => $similar,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "GET",
-      CURLOPT_HTTPHEADER => array(
-        "cache-control: no-cache"
-      ),
-    ));
-    
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-    
-    curl_close($curl);
-    $simres= json_decode($response, true);
+  
 ?>
 
 
@@ -163,7 +145,21 @@ $lang='&language=en-US';
                 <h2><?php echo $r['original_title'];?></h2>
               </div>
               <div class="OneLine"><?php echo $r['tagline'];?></div>
-              <div class="Genres"><?php echo $r['genres'];?></div>
+
+              <div class="Genres">
+                
+              
+              
+              <?php
+              
+              foreach($r['genres'] as $n ){
+                echo($n['name'].", ");
+              }
+              
+              
+              
+              
+              ?></div>
             </div>
           </div>
           <div class="otherbutton"></div>
