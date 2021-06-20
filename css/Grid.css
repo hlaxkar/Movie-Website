@@ -1,7 +1,11 @@
 .container {
   display: grid;
-  grid-template-columns: 0.7fr 1.7fr 0.6fr;
-  grid-template-rows: 1.2fr 0.8fr 1fr;
+  grid-template-columns: 0.5fr 1.7fr 0.6fr;
+  
+  /* 0.7fr 1.7fr 0.6fr; */
+  grid-template-rows: 1.2fr 0.5fr 1fr;
+  
+  /* 1.2fr 0.8fr 1fr; */
   gap: 5px 5px;
   width: fit-content;
   grid-auto-flow: row;
@@ -41,15 +45,28 @@
   grid-area: Poster;
   
   
-  width: 180px;
+  width: 100%;
   object-fit: contain;
+}
+.Poster img{
+  border-radius: 8px;
 }
 
 .Buttons {
   grid-area: Buttons;
+  margin-top: 10px;
+  height: max-content;
+  gap: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  
 }
 
+
 .Commentbox {
+  background-color: #111;
   grid-area: Commentbox;
 }
 
@@ -96,15 +113,22 @@
 
 .OneLine {
   grid-area: OneLine;
+  padding-top: 7px;
   padding-bottom: 10px;
   height: max-content;
+  text-shadow: #770808 2px 2px 0px;
   border-bottom: 1px rgba(255, 255, 255, 0.452) solid;
+  color: #fcbe11;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .Genres {
-  /* padding-top: 15px; */
+  padding-top: 12px;
+  padding-bottom: 12px; 
   grid-area: Genres;
-  border-bottom: 1px rgba(255, 255, 255, 0.452) solid;
+  border-bottom: 1px rgba(255, 255, 255, 0.384) solid;
 }
 
 .otherbutton {

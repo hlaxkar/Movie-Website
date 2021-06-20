@@ -1,8 +1,8 @@
-<?php
+<!-- <?php
 
 
 $base_url = '/discover/movie?sort_by=popularity.desc&';
-$similar = 'https://api.themoviedb.org/3/movie/475/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1';
+$similar = 'https://api.themoviedb.org/3/movie/550/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1';
 
 if (isset($_GET['q1']) && ($_GET['q1'] != "")) {
   $movie_url = '/movie/' . $_GET['q1'] . '?';
@@ -15,11 +15,11 @@ $lang = '&language=en-US';
 
 function getData($base)
 {
-  // $url = createurl($base);
+  $url = createurl($base);
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => $base,
+    CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -37,20 +37,18 @@ function getData($base)
   $r = json_decode($response, true);
   return $r;
 }
-
-
 function createurl($base)
 {
   $API_KEY = 'api_key=7432355f4f5f5ce12ec85408a877ac57&';
   $API_URL = 'https://api.themoviedb.org/3';
   $urls = array(
-    'movie' => '/movie/550?',
+    'movie' => '/movie/9344?',
     'similar' => 'recommendations?',
     'popular' => '/discover/movie?sort_by=popularity.desc&'
 
   );
 
-  $url =  $API_URL . $urls[$base] . $API_KEY . "append_to_response=images";
+  $url =  $API_URL . $urls[$base] . $API_KEY;
   return $url;
 }
 $curl = curl_init();
@@ -74,11 +72,8 @@ curl_close($curl);
 $r = json_decode($response, true); //because of true, it's in an array
 //print_r($response2);
 $bg = 'https://image.tmdb.org/t/p/original' . $r["backdrop_path"];
-$bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['file_path'];
 
-
-//https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
-?>
+?> -->
 
 
 
@@ -91,8 +86,8 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link href="css/Grid.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/comments.css">
   <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+  <link rel="stylesheet" href="css/comments.css">
   <script src="https://kit.fontawesome.com/63ad159168.js" crossorigin="anonymous"></script>
   <title>Movie Ducks</title>
 </head>
@@ -100,7 +95,8 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
 <body>
 
   <!-- Big Poster Header -->
-  <div class="big-poster" style="background-image: url('<?php echo $bg ?>');">
+  <!-- <div class="big-poster" style="background-image: url('<?php echo $bg ?>');"> -->
+  <div class="big-poster" style="background-image: url('img/john1.jpg');">
 
     <!--====== Navigation bar==== -->
 
@@ -130,12 +126,14 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
     <!-- Top Title -->
     <div class="info-top">
       <span class="title">
-        <!-- John Wick 3-->
-        <?php echo $r['title']; ?>
+        John Wick 3
+        <!-- <?php echo $r['title']; ?> -->
       </span>
       <span class="title-buttons">
 
-        <a href="#">IMDb <?php echo $r['vote_average']; ?></a>
+        <a href="#">IMDb
+          <?php echo $r['vote_average']; ?>
+        </a>
       </span>
       <span class="title-buttons">
 
@@ -151,7 +149,9 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
           <div class="Summery">
             <h2>Storyline</h2>
             <br>
-            <p><?php echo $r['overview']; ?>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Et ab accusantium neque maxime voluptatum natus
+              eaque magnam voluptate praesentium, soluta iste ratione vitae ipsa omnis beatae odit tempore asperiores
+              rem nesciunt voluptatem similique fugit obcaecati. Voluptatibus aperiam facilis quaerat maxime?
             </p>
           </div>
           <div class="Watch-Options">
@@ -163,11 +163,13 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
           </div>
           <div class="PosterButton">
             <div class="Poster">
-              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
+              <img src="img/john2.jpg" alt="Movie Poster" />
             </div>
             <div class="Buttons">
-              <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
-              " aria-hidden="true"></i> Add to list</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
+              <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;"
+                    aria-hidden="true"></i>Watch Later</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
+              " aria-hidden="true"></i> Add to list</span></a><a class="sidebuttons" href="#"><span><i
+                    class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
 
             </div>
             <div class="Commentbox">
@@ -182,8 +184,7 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
               <p>
                 Director: Josh Ruben <br>
                 Writer: Mishna Wolff <br>
-                Stars: Sam Richardson, Milana Vayntrub
-
+                Stars: Sam Richardson
               </p>
 
             </div>
@@ -192,17 +193,17 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
               <br>
               <ul>
                 <li>Keanu Reaves</li>
+                <li>Robert Downey</li>
                 <li>Akshay Kumar</li>
-                <li>Keanu Reaves</li>
-                <li>Keanu Reaves</li>
-                <li>Keanu Reaves</li>
+                <li>Jackie Chan</li>
+                <li>Rahul Gandhi</li>
               </ul>
             </div>
             <div class="TitleDetails">
               <div class="filmTitle">
-                <h2><?php echo $r['original_title']; ?></h2>
+                <h2>John Vicks</h2>
               </div>
-              <div class="OneLine"><?php echo $r['tagline']; ?></div>
+              <div class="OneLine">Mad Mad Dog</div>
 
               <div class="Genres">
                 <span>
@@ -210,17 +211,19 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
                 </span>
 
                 <span>
-                  <?php
+                  <!-- <?php
 
                   echo (number_format($r['vote_count']));
-                  ?>
+                  ?> -->
+                  23,299
 
                 </span>
                 <span>
-                  <?php
+                  <!-- <?php
                   foreach ($r['genres'] as $n) {
                     echo ($n['name'] . ",");
-                  } ?>
+                  } ?> -->
+                  Comedy, Action, Sci-fi
                 </span>
 
               </div>
@@ -229,34 +232,40 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
           <div class="otherbutton"></div>
 
 
+
         </div>
+
+
       </div>
       <!-- ====Similar Movies grid==== -->
       <div class="similarmovies">
-        
+        <br>
         <h3 style="font-weight: bold;"><i class="fa fa-film" aria-hidden="true"></i>Similar Movies</h3>
-        
+        <br>
+        <hr>
+        <br>
         <div class="suggestions">
           <?php
-          $simres = getData($similar);
-
-
           $i = 0;
           foreach ($simres['results'] as $s) {
-            if ($i == 6) {
+            if ($i == 5) {
               break;
             }
 
           ?>
 
-            <div class="similarposters">
-              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="">
-              <div class="caption"> <?php echo ($s['title']); ?>
+          <div class="similarposters">
+            <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"' ) ?> alt="poster"
+            srcset="">
+            <div class="caption">
+              <?php echo ($s['title']); ?>
 
-                <span><?php echo ($s['vote_average']); ?></span>
-              </div>
-
+              <span>
+                <?php echo ($s['vote_average']); ?>
+              </span>
             </div>
+
+          </div>
 
           <?php
             $i++;
@@ -269,19 +278,26 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
         </div>
 
       </div>
+
+
       <!-- ====//Similar Movies grid END==== -->
     </div>
   </div>
 
 
-  <div class="comment-container" style="background: linear-gradient( rgb(0 0 0), rgb(0 0 0 / 14%)), url(<?php echo $bg2; ?>);
+
+  <div class="comment-container" style="background: linear-gradient( rgb(0 0 0), rgb(23 21 29 / 74%)), url(https://www.themoviedb.org/t/p/original/vXJZEQ0MqVpJLMfVLG8RhcjFAw.jpg);
   
   background-repeat: no-repeat;
 background-position: bottom;
 background-size: cover;
   
   
-  ">
+  "
+  
+  
+  
+  >
     <div class="comment-pannel">
       <h1>Reviews</h1>
       <div class="comment-form">
@@ -366,8 +382,6 @@ background-size: cover;
             dicta? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, quo iure in sapiente ad debitis,
             ipsa aspernatur possimus enim eum excepturi sit optio itaque, voluptatum quasi doloremque. Nobis, cupiditate
             sapiente?
-            <br>
-
           </div>
         </article>
 
@@ -375,7 +389,7 @@ background-size: cover;
 
         <a href="#" class="showmore-btn">
           <div class="showmore">
-
+           
             <span>
               <h4>Show More</h4>
             </span>
@@ -384,6 +398,8 @@ background-size: cover;
       </div>
     </div>
   </div>
+
+
 
 
 </body>
