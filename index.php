@@ -1,6 +1,7 @@
 <?php
 
 
+
 $base_url = '/discover/movie?sort_by=popularity.desc&';
 $similar = 'https://api.themoviedb.org/3/movie/475/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1';
 
@@ -38,20 +39,20 @@ function getData($base)
   return $r;
 }
 
-
+//Creates URL for api according to query
 function createurl($base, $movieDID = '550')
 {
   $API_KEY = 'api_key=7432355f4f5f5ce12ec85408a877ac57&';
   $API_URL = 'https://api.themoviedb.org/3';
   $urls = array(
-    'movie' => '/movie/'.$movieDID.'?',
-    'similar' => 'recommendations?',
+    'movie' => '/movie/' . $movieDID . '?',
+    'similar' => '/movie/' . $movieDID . '/recommendations?',
     'popular' => '/discover/movie?sort_by=popularity.desc&'
 
   );
 
- $url =  $API_URL . $urls[$base] . $API_KEY . "append_to_response=images";
- return $url;
+  $url =  $API_URL . $urls[$base] . $API_KEY . "append_to_response=images,credits";
+  return $url;
 }
 
 
@@ -72,13 +73,23 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 curl_close($curl);
+$imgbase = 'https://image.tmdb.org/t/p/original';
 
 $r = json_decode($response, true); //because of true, it's in an array  $r["backdrop_path"];
 $num =  count($r['images']['backdrops']);
-$bg = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand(0,$num)]['file_path'];
-$bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand(0,$num)]['file_path'];
+$bg = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
+$bg2 = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
 
+foreach ($r['credits']['crew'] as $crew) {
 
+  if (isset($writer) && isset($director)) {
+    break;
+  } elseif ($crew['job'] == 'Writer') {
+    $writer = $crew['name'];
+  } elseif ($crew['job'] == 'Director') {
+    $director = $crew['name'];
+  }
+}
 
 ?>
 
@@ -150,90 +161,94 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand
 
     <div class="info-box">
       <div class="Movieinfo">
-      
-      <div class="container">
-      <div class="posterside">
 
-        <div class="Poster">
-            <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
-          </div>
-          <div class="Buttons">
-            <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
+        <div class="container">
+          <div class="posterside">
+
+            <div class="Poster">
+              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
+            </div>
+            <div class="Buttons">
+              <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
             " aria-hidden="true"></i> Add to list</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
 
+            </div>
+
+
           </div>
-
-
-      </div>
-      <div class="infoside">
-        <div class="summery">
-            <h2>Storyline</h2>
-            <br>
-            <p><?php echo $r['overview']; ?>
-            </p>
-
-        </div>
-        <div class="movieinfo">
-          <div class="info1">
-            <div class="Details-cast">
-              <div class="details">
-                <h2>Details</h2>
+          <div class="infoside">
+            <div class="summery">
+              <h2>Storyline</h2>
               <br>
-              <p>
-                Director: Josh Ruben <br>
-                Writer: Mishna Wolff <br>
-                Stars: Sam Richardson, Milana Vayntrub
-
+              <p><?php echo $r['overview']; ?>
               </p>
-                  
-              </div>
-              <div class="cast">
-                <h2>Cast</h2>
-                <br>
-                <ul>
-                  <li>Keanu Reaves</li>
-                  <li>Akshay Kumar</li>
-                  <li>Keanu Reaves</li>
-                  <li>Keanu Reaves</li>
-                  <li>Keanu Reaves</li>
-                </ul>
-              </div>
+
             </div>
-            <div class="titlepart">
-                <div class="filmTitle">
-                <h2><?php echo $r['original_title']; ?></h2>
+            <div class="movieinfo">
+              <div class="info1">
+                <div class="Details-cast">
+                  <div class="details">
+                    <h2>Details</h2>
+                    <br>
+                    <p>
+                    <ul>
+                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director:</b><?= $director; ?> </li>
+                      <!-- <li><b><i class="fa fa-pencil" aria-hidden="true"></i> Writer:</b>
+                        <?php echo $writer; ?> </li> -->
+                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date:</b> <?= $r['release_date']; ?></li>
+                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country:</b> <?= $r['production_countries'][0]['name']  ?></li>
+                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language:</b><?= $r['spoken_languages'][0]['english_name'] ?></li>
+                    </ul>
+                    </p>
+
+                  </div>
+                  <div class="cast">
+                    <h2>Cast</h2>
+                    <br>
+                    <ul>
+                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][0]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][0]['name'] ?></li>
+                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][1]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][1]['name'] ?></li>
+                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][2]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][2]['name'] ?></li>
+                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][3]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][3]['name'] ?></li>
+                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][4]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][4]['name'] ?></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="titlepart">
+                  <div class="filmTitle">
+                    <h2><?php echo $r['original_title']; ?></h2>
+                  </div>
+                  <div class="OneLine"><?php echo $r['tagline']; ?></div>
+
+                  <div class="Genres">
+                    <span>
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                      <?php
+
+                      echo (number_format($r['vote_count']));
+                      ?>
+
+                    </span>
+                    <span>
+                      <?php
+                      foreach ($r['genres'] as $n) {
+                        echo ($n['name'] . ",");
+                      } ?>
+                    </span>
+
+                  </div>
+
+
+
+                </div>
               </div>
-              <div class="OneLine"><?php echo $r['tagline']; ?></div>
-            
-              <div class="Genres">
-                <span>
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                  <?php
-
-                  echo (number_format($r['vote_count']));
-                  ?>
-
-                </span>
-                <span>
-                  <?php
-                  foreach ($r['genres'] as $n) {
-                    echo ($n['name'] . ",");
-                  } ?>
-                </span>
-
-              </div>
-            
-            
-            
+              <div class="watchopts"></div>
             </div>
           </div>
-          <div class="watchopts"></div>
         </div>
-      </div>
-    </div>
 
 
 
@@ -242,9 +257,9 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand
       </div>
       <!-- ====Similar Movies grid==== -->
       <div class="similarmovies">
-        
+
         <h3 style="font-weight: bold;"><i class="fa fa-film" aria-hidden="true"></i>Similar Movies</h3>
-        
+
         <div class="suggestions">
           <?php
           $simres = getData($similar);
@@ -285,18 +300,13 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand
 
   <div class="comment-container" style="background: linear-gradient( rgb(0 0 0), rgb(0 0 0 / 14%)), url(<?php echo $bg2; ?>);
   
-  background-repeat: no-repeat;
-background-position: bottom;
-background-size: cover;
-  
-  
-  ">
+          background-repeat: no-repeat;
+          background-position: bottom;
+          background-size: cover;">
     <div class="comment-pannel">
-      <h1>Reviews</h1>
+      <h1>Rate and Reviews</h1>
       <div class="comment-form">
-        Lorem, ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, possimus. Quasi officiis atque
-        nostrum, minima eum voluptate maxime inventore itaque. <br>
-
+        <textarea name="comment" id="" cols="30" rows="5" class="comment-box" placeholder="Enter your Review of the movie" ></textarea>
 
 
       </div>
