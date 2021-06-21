@@ -5,9 +5,9 @@ $base_url = '/discover/movie?sort_by=popularity.desc&';
 $similar = 'https://api.themoviedb.org/3/movie/475/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1';
 
 if (isset($_GET['q1']) && ($_GET['q1'] != "")) {
-  $movie_url = '/movie/' . $_GET['q1'] . '?';
+  $movieID =  $_GET['q1'];
 } else {
-  $movie_url = '/movie/550?';
+  $movieID = '550';
 }
 
 
@@ -39,24 +39,26 @@ function getData($base)
 }
 
 
-function createurl($base)
+function createurl($base, $movieDID = '550')
 {
   $API_KEY = 'api_key=7432355f4f5f5ce12ec85408a877ac57&';
   $API_URL = 'https://api.themoviedb.org/3';
   $urls = array(
-    'movie' => '/movie/550?',
+    'movie' => '/movie/'.$movieDID.'?',
     'similar' => 'recommendations?',
     'popular' => '/discover/movie?sort_by=popularity.desc&'
 
   );
 
-  $url =  $API_URL . $urls[$base] . $API_KEY . "append_to_response=images";
-  return $url;
+ $url =  $API_URL . $urls[$base] . $API_KEY . "append_to_response=images";
+ return $url;
 }
+
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => createurl('movie'),
+  CURLOPT_URL => createurl('movie', $movieID),
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -71,13 +73,13 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-$r = json_decode($response, true); //because of true, it's in an array
-//print_r($response2);
-$bg = 'https://image.tmdb.org/t/p/original' . $r["backdrop_path"];
-$bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['file_path'];
+$r = json_decode($response, true); //because of true, it's in an array  $r["backdrop_path"];
+$num =  count($r['images']['backdrops']);
+$bg = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand(0,$num)]['file_path'];
+$bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][mt_rand(0,$num)]['file_path'];
 
 
-//https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
+
 ?>
 
 
@@ -91,6 +93,7 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link href="css/Grid.css" rel="stylesheet" />
+  <link href="css/grid2.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/comments.css">
   <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
   <script src="https://kit.fontawesome.com/63ad159168.js" crossorigin="anonymous"></script>
@@ -147,37 +150,34 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
 
     <div class="info-box">
       <div class="Movieinfo">
-        <div class="container">
-          <div class="Summery">
+      
+      <div class="container">
+      <div class="posterside">
+
+        <div class="Poster">
+            <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
+          </div>
+          <div class="Buttons">
+            <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
+            " aria-hidden="true"></i> Add to list</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
+
+          </div>
+
+
+      </div>
+      <div class="infoside">
+        <div class="summery">
             <h2>Storyline</h2>
             <br>
             <p><?php echo $r['overview']; ?>
             </p>
-          </div>
-          <div class="Watch-Options">
-            <h3>Watch on:</h3>
-            <br>
-            <button type="submit">Prime</button>
-            <i class="fa fa-video-camera" aria-hidden="true"></i>
 
-          </div>
-          <div class="PosterButton">
-            <div class="Poster">
-              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
-            </div>
-            <div class="Buttons">
-              <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
-              " aria-hidden="true"></i> Add to list</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
-
-            </div>
-            <div class="Commentbox">
-              <a class="sidebuttons" href="#" <i class="fa fa-comments" aria-hidden="true"></i>>Show Comments</a>
-
-            </div>
-          </div>
-          <div class="MovieDetails">
-            <div class="Details">
-              <h2>Details</h2>
+        </div>
+        <div class="movieinfo">
+          <div class="info1">
+            <div class="Details-cast">
+              <div class="details">
+                <h2>Details</h2>
               <br>
               <p>
                 Director: Josh Ruben <br>
@@ -185,25 +185,26 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
                 Stars: Sam Richardson, Milana Vayntrub
 
               </p>
-
+                  
+              </div>
+              <div class="cast">
+                <h2>Cast</h2>
+                <br>
+                <ul>
+                  <li>Keanu Reaves</li>
+                  <li>Akshay Kumar</li>
+                  <li>Keanu Reaves</li>
+                  <li>Keanu Reaves</li>
+                  <li>Keanu Reaves</li>
+                </ul>
+              </div>
             </div>
-            <div class="Cast">
-              <h2>Cast</h2>
-              <br>
-              <ul>
-                <li>Keanu Reaves</li>
-                <li>Akshay Kumar</li>
-                <li>Keanu Reaves</li>
-                <li>Keanu Reaves</li>
-                <li>Keanu Reaves</li>
-              </ul>
-            </div>
-            <div class="TitleDetails">
-              <div class="filmTitle">
+            <div class="titlepart">
+                <div class="filmTitle">
                 <h2><?php echo $r['original_title']; ?></h2>
               </div>
               <div class="OneLine"><?php echo $r['tagline']; ?></div>
-
+            
               <div class="Genres">
                 <span>
                   <i class="fa fa-eye" aria-hidden="true"></i>
@@ -224,12 +225,20 @@ $bg2 = 'https://image.tmdb.org/t/p/original' . $r['images']['backdrops'][5]['fil
                 </span>
 
               </div>
+            
+            
+            
             </div>
           </div>
-          <div class="otherbutton"></div>
-
-
+          <div class="watchopts"></div>
         </div>
+      </div>
+    </div>
+
+
+
+
+
       </div>
       <!-- ====Similar Movies grid==== -->
       <div class="similarmovies">

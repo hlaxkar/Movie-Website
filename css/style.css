@@ -36,7 +36,7 @@ body {
     -webkit-mask-image: linear-gradient(to top, transparent 15%, black 45%);
     background: center no-repeat;
     
-    height: 650px;
+    height: 90vh;
     overflow: hidden;
     width: auto;
     background-size: 100%;
@@ -117,7 +117,7 @@ body {
     display: grid;
     
     height: auto;
-    margin-top: -15%;
+    margin-top: -17%;
     padding: 0 15%;
     position: relative;
 }
@@ -141,9 +141,10 @@ body {
 }
 
 .title-buttons {
-    background: #8c8c8c47;
+    background: #4a4a4a6e;
     border-radius: 20px;
     color: white;
+    border: #fe4141 solid 1px;
     display: inline-flex;
     float: right;
     font-size: 0.8rem;
