@@ -74,7 +74,7 @@ $imgbase = 'https://image.tmdb.org/t/p/original';
 
 $r = json_decode($response, true); //because of true, it's in an array  $r["backdrop_path"];
 $num =  count($r['images']['backdrops']);
-if($num!=0){
+if ($num != 0) {
 
   $bg = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
   $bg2 = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
@@ -125,7 +125,7 @@ foreach ($r['credits']['crew'] as $crew) {
 
         <form action="?" method="get">
           <div class="searchbar">
-            <input type="text" class="Search" name="q1" id="q1" placeholder="Enter Search Term..." id="Search">
+            <input type="text" class="Search fa" name="q1" id="q1" placeholder="&#xF002; Enter Search Term..." id="Search">
           </div>
         </form>
         <div class="header-links">Link1</div>
@@ -148,10 +148,11 @@ foreach ($r['credits']['crew'] as $crew) {
         <!-- John Wick 3-->
         <?php echo $r['title']; ?>
       </span>
-      <span class="title-buttons">
+      <a href="#" class="imdb">
+      <span class="imdb title-buttons ">
 
-        <a href="#">IMDb <?php echo (number_format((float)$r['vote_average'], 1, '.', '')); ?></a>
-      </span>
+        IMDb <?php echo (number_format((float)$r['vote_average'], 1, '.', '')); ?>
+      </span></a>
       <span class="title-buttons">
 
         <a href="#">Watch Later</a>
@@ -167,7 +168,11 @@ foreach ($r['credits']['crew'] as $crew) {
           <div class="posterside">
 
             <div class="Poster">
-              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="Movie Poster" />
+              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $r['poster_path'] . '"') ?> alt="<?= $r['title'] ?>" id="poster" />
+              <div class="overlay" id="overlay">
+                <div class="expandtext"><i class="fa fa-expand" aria-hidden="true"></i> Expand</div>
+              </div>
+
             </div>
             <div class="Buttons">
               <a class="sidebuttons" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a><a class="sidebuttons" href="#"><span><i class="fa fa-plus
@@ -193,12 +198,12 @@ foreach ($r['credits']['crew'] as $crew) {
                     <br>
                     <p>
                     <ul>
-                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director:</b><?= $director; ?> </li>
+                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><?= $director; ?> </li>
                       <!-- <li><b><i class="fa fa-pencil" aria-hidden="true"></i> Writer:</b>
                         <?php echo $writer; ?> </li> -->
-                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date:</b> <?= date_format($date, "j M Y" ); ?></li>
-                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country:</b> <?= $r['production_countries'][0]['name']  ?></li>
-                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language:</b><?= $r['spoken_languages'][0]['english_name'] ?></li>
+                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b> <?= date_format($date, "j M Y"); ?></li>
+                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b> <?= $r['production_countries'][0]['name']  ?></li>
+                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><?= $r['spoken_languages'][0]['english_name'] ?></li>
                     </ul>
                     </p>
 
@@ -222,9 +227,9 @@ foreach ($r['credits']['crew'] as $crew) {
                   <div class="OneLine"><?php echo $r['tagline']; ?></div>
 
                   <div class="Genres">
-                    
-                      <i class="fa fa-eye" aria-hidden="true"></i>
-                    
+
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+
 
                     <span class="vote-count">
                       <?php
@@ -240,9 +245,12 @@ foreach ($r['credits']['crew'] as $crew) {
                       } ?>
                     </span>
                     <span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    <?= $r['runtime']." min" ?>
-                    
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      <?= $r['runtime'] . " min" ?>
+
+                    </span>
+                    <span>
+                      <i class="fa fa-star" aria-hidden="true"></i> <?= number_format((float)$r['vote_average'], 1, '.', ''); ?>
                     </span>
 
                   </div>
@@ -252,13 +260,13 @@ foreach ($r['credits']['crew'] as $crew) {
                 </div>
               </div>
               <div class="watchopts">
-              
-              <h2>Available on:</h2>
-              
-  <div class="button">
-    <a class="a" href="#">NETFLIX</a>
-    <div class="background__button"></div>
-  </div>
+
+                <h2>Available on:</h2>
+
+                <div class="button">
+                  <a class="a" href="#">NETFLIX</a>
+                  <div class="background__button"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -276,7 +284,7 @@ foreach ($r['credits']['crew'] as $crew) {
 
         <div class="suggestions">
           <?php
-          $simres = getData(createurl('similar',$movieID));
+          $simres = getData(createurl('similar', $movieID));
 
 
           $i = 0;
@@ -286,15 +294,15 @@ foreach ($r['credits']['crew'] as $crew) {
             }
 
           ?>
-<a href="index.php?q1=<?=$s['id'] ?>">
-            <div class="similarposters">
-              <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="">
-              <div class="caption"> <?php echo ($s['title']); ?>
+            <a href="index.php?q1=<?= $s['id'] ?>">
+              <div class="similarposters">
+                <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="">
+                <div class="caption"> <?php echo ($s['title']); ?>
 
-                <span><?php echo ( number_format((float)$s['vote_average'], 1, '.', '')  ); ?></span>
+                  <span><?php echo (number_format((float)$s['vote_average'], 1, '.', '')); ?></span>
+                </div>
+
               </div>
-
-            </div>
             </a>
           <?php
             $i++;
@@ -320,7 +328,7 @@ foreach ($r['credits']['crew'] as $crew) {
     <div class="comment-pannel">
       <h1>Rate and Reviews</h1>
       <div class="comment-form">
-        <textarea name="comment" id="" cols="30" rows="5" class="comment-box" placeholder="Enter your Review of the movie" ></textarea>
+        <textarea name="comment" id="" cols="30" rows="5" class="comment-box" placeholder="Enter your Review of the movie"></textarea>
 
 
       </div>
@@ -418,21 +426,60 @@ foreach ($r['credits']['crew'] as $crew) {
     </div>
   </div>
 
-<script>
-let button = document.querySelector('.button');
-let testA = document.querySelector('.a');
-let backgroundButton = document.querySelector('.background__button');
+  <div id="expandimage" class="modal">
 
-  button.addEventListener('mouseenter', function(){
-    testA.classList.add('is-white')
-    backgroundButton.classList.add('is-hover');
-  });
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
 
-  button.addEventListener('mouseleave', function(){
-    testA.classList.remove('is-white')
-    backgroundButton.classList.remove('is-hover');
-  });
-</script>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
+
+
+
+  <script>
+    let button = document.querySelector('.button');
+    let testA = document.querySelector('.a');
+    let backgroundButton = document.querySelector('.background__button');
+
+    button.addEventListener('mouseenter', function() {
+      testA.classList.add('is-white')
+      backgroundButton.classList.add('is-hover');
+    });
+
+    button.addEventListener('mouseleave', function() {
+      testA.classList.remove('is-white')
+      backgroundButton.classList.remove('is-hover');
+    });
+
+
+
+
+    // Get the modal
+    var modal = document.getElementById("expandimage");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var overlay = document.getElementById('overlay');
+    var img = document.getElementById("poster");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    overlay.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
 </body>
 <footer>Made by Harshit Laxkar aka Lord Duck</footer>
 
