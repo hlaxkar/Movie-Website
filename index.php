@@ -1,7 +1,4 @@
 <?php
-
-
-
 $base_url = '/discover/movie?sort_by=popularity.desc&';
 $similar = 'https://api.themoviedb.org/3/movie/475/recommendations?api_key=7432355f4f5f5ce12ec85408a877ac57&language=en-US&page=1';
 
@@ -77,9 +74,13 @@ $imgbase = 'https://image.tmdb.org/t/p/original';
 
 $r = json_decode($response, true); //because of true, it's in an array  $r["backdrop_path"];
 $num =  count($r['images']['backdrops']);
-$bg = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
-$bg2 = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
+if($num!=0){
 
+  $bg = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
+  $bg2 = $imgbase . $r['images']['backdrops'][mt_rand(0, $num - 1)]['file_path'];
+}
+
+$date = date_create($r['release_date']);
 foreach ($r['credits']['crew'] as $crew) {
 
   if (isset($writer) && isset($director)) {
@@ -149,7 +150,7 @@ foreach ($r['credits']['crew'] as $crew) {
       </span>
       <span class="title-buttons">
 
-        <a href="#">IMDb <?php echo $r['vote_average']; ?></a>
+        <a href="#">IMDb <?php echo (number_format((float)$r['vote_average'], 1, '.', '')); ?></a>
       </span>
       <span class="title-buttons">
 
@@ -195,7 +196,7 @@ foreach ($r['credits']['crew'] as $crew) {
                       <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director:</b><?= $director; ?> </li>
                       <!-- <li><b><i class="fa fa-pencil" aria-hidden="true"></i> Writer:</b>
                         <?php echo $writer; ?> </li> -->
-                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date:</b> <?= $r['release_date']; ?></li>
+                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date:</b> <?= date_format($date, "j M Y" ); ?></li>
                       <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country:</b> <?= $r['production_countries'][0]['name']  ?></li>
                       <li><b><i class="fa fa-language" aria-hidden="true"></i> Language:</b><?= $r['spoken_languages'][0]['english_name'] ?></li>
                     </ul>
@@ -221,11 +222,11 @@ foreach ($r['credits']['crew'] as $crew) {
                   <div class="OneLine"><?php echo $r['tagline']; ?></div>
 
                   <div class="Genres">
-                    <span>
+                    
                       <i class="fa fa-eye" aria-hidden="true"></i>
-                    </span>
+                    
 
-                    <span>
+                    <span class="vote-count">
                       <?php
 
                       echo (number_format($r['vote_count']));
@@ -235,8 +236,13 @@ foreach ($r['credits']['crew'] as $crew) {
                     <span>
                       <?php
                       foreach ($r['genres'] as $n) {
-                        echo ($n['name'] . ",");
+                        echo ($n['name'] . ", ");
                       } ?>
+                    </span>
+                    <span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <?= $r['runtime']." min" ?>
+                    
                     </span>
 
                   </div>
@@ -245,7 +251,15 @@ foreach ($r['credits']['crew'] as $crew) {
 
                 </div>
               </div>
-              <div class="watchopts"></div>
+              <div class="watchopts">
+              
+              <h2>Available on:</h2>
+              
+  <div class="button">
+    <a class="a" href="#">NETFLIX</a>
+    <div class="background__button"></div>
+  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -262,7 +276,7 @@ foreach ($r['credits']['crew'] as $crew) {
 
         <div class="suggestions">
           <?php
-          $simres = getData($similar);
+          $simres = getData(createurl('similar',$movieID));
 
 
           $i = 0;
@@ -272,16 +286,16 @@ foreach ($r['credits']['crew'] as $crew) {
             }
 
           ?>
-
+<a href="index.php?q1=<?=$s['id'] ?>">
             <div class="similarposters">
               <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="">
               <div class="caption"> <?php echo ($s['title']); ?>
 
-                <span><?php echo ($s['vote_average']); ?></span>
+                <span><?php echo ( number_format((float)$s['vote_average'], 1, '.', '')  ); ?></span>
               </div>
 
             </div>
-
+            </a>
           <?php
             $i++;
           }
@@ -404,7 +418,21 @@ foreach ($r['credits']['crew'] as $crew) {
     </div>
   </div>
 
+<script>
+let button = document.querySelector('.button');
+let testA = document.querySelector('.a');
+let backgroundButton = document.querySelector('.background__button');
 
+  button.addEventListener('mouseenter', function(){
+    testA.classList.add('is-white')
+    backgroundButton.classList.add('is-hover');
+  });
+
+  button.addEventListener('mouseleave', function(){
+    testA.classList.remove('is-white')
+    backgroundButton.classList.remove('is-hover');
+  });
+</script>
 </body>
 <footer>Made by Harshit Laxkar aka Lord Duck</footer>
 
