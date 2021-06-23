@@ -340,19 +340,7 @@ body::-webkit-scrollbar-thumb
 .details i{
     color: #fe4141;
 }
-.comment-box{
-width: 100%;
-background: #53535336;
-color: whitesmoke;
-outline: none;
-overflow: auto;
-font-size: medium;
-}
-.comment-form{
 
-    margin-top: 20px;
-
-}
 .Genres{
     font-size: small;
 }
@@ -508,4 +496,4 @@ font-size: medium;
   @media only screen and (max-width: 700px){
     .modal-content {
       width: 100%;
-    }
+    }}

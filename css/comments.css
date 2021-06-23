@@ -15,6 +15,7 @@ background-size: cover; */
 
 .comment-pannel{
 border-top: 1px rgba(255, 255, 255, 0.452) solid;
+
 }
 .comments{
 display: flex;
@@ -35,6 +36,22 @@ background-color: #1e1b268c;
 min-height: 150px;
 
 }
+
+.comment-box{
+    width: 100%;
+    background: #53535336;
+    color: whitesmoke;
+    outline: none;
+    overflow: auto;
+    padding: 15px;
+    font-size: medium;
+    resize: none;
+    }
+    .comment-form{
+        padding: 20px;
+        margin-top: 20px;
+    
+    }
 .avatar{
     width: 70px;
     height: 70px;
