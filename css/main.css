@@ -1,6 +1,16 @@
+@font-face {
+    font-family: 'Njord';
+    src: url(../fonts/Njord-Regular.otf);
+}
+@font-face {
+    font-family: 'TheArtist';
+    src: url(../fonts/TheArtist-Sans.otf);
+}
+
 .navbar{
     position: fixed;
     height: 60px;
+    
 width: 100%;
 }
 
@@ -17,4 +27,100 @@ color: white;
 }
 ul{
     list-style: none;
+}
+.Search{
+    width: auto;
+    font-size: large;
+}
+.big-poster{
+    transition: 0.3s ease;
+    display: grid;
+    height: 97vh;
+    background-image: url(../img/backdrop1.jpg);
+    background-position: top;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, black 20%);
+}
+
+}
+.popular{
+    display: grid;
+    height: 60vh;
+}
+.popular-info{
+margin-top: 27vh;
+padding-right: 15px;
+padding-left: 8vw;
+width: 45vw;
+backdrop-filter: blur(3px);
+height: auto;
+-webkit-mask-image: linear-gradient(to left, transparent 15%, black 25%);
+}
+.popular h1{
+    font-family: 'Njord';
+    font-size: 45px;
+    width: 75%;
+    text-shadow: #323942 4px 5px 0px;
+    
+}
+.popular h3{
+    padding: 10px 0 8px 0;
+    font-family: 'TheArtist';
+    text-shadow: #770808 2px 2px 0px;
+    border-bottom: 1px rgba(255, 255, 255, 0.452) solid;
+    color: #fcbe11;
+    font-size: 30px;
+font-style: italic;
+    /* font-weight: 500; */
+    /* font-family: 'IBM Plex Mono', monospace; */
+    
+}
+.pop-sum{
+    padding-top: 10px;
+    width: 25vw;
+}
+.pop-sum p{
+    font-size: 18px;
+    font-weight: 100;
+
+}
+.readmore{
+    width: 7vw;
+    height: 5vh;
+    backdrop-filter: blur(5px);
+    background: #a5a5a598;
+    color: white;
+    outline: none;
+    font-weight: bold;
+    font-family: 'TheArtist';
+ cursor: pointer;
+font-size: 17px;
+    margin-top: 3vh;
+}
+.pop-card-holder{
+    
+    height: auto;
+    width: 70%;
+    margin-top: 60vh;
+    margin-left: 20vh;
+}
+.pop-card-holder h2{
+    padding: 10px;
+
+}
+.pop-cards{
+    display: inline-flex;
+    width: 80%;
+    justify-content: space-evenly;
+}
+.movie-card{
+    width: 110px;
+    
+    overflow: hidden;
+    
+}
+.movie-card img{
+    width: 100%;
+
 }
