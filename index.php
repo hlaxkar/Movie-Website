@@ -121,15 +121,15 @@ foreach ($r['credits']['crew'] as $crew) {
 
     <div class="header">
       <div class="inner-Header">
-        <div class="logo">LOGO</div>
+        <span class="logo">LOGO</span>
 
-        <form action="?" method="get">
-          <div class="searchbar">
-            <input type="text" class="Search fa" name="q1" id="q1" placeholder="&#xF002; Enter Search Term..." id="Search">
-          </div>
-        </form>
-        <div class="header-links">Link1</div>
-        <div class="header-links">Link2</div>
+        
+          <span class="searchbar"><form action="?" method="get">
+            <input type="text" class="Search fa" name="q1" id="q1" placeholder="&#xF002;  Search Movie" id="Search">
+          
+        </form></span>
+        <a href="#" role="button" class="header-links">Logout</a>
+        
 
 
       </div>
@@ -153,10 +153,10 @@ foreach ($r['credits']['crew'] as $crew) {
 
         IMDb <?php echo (number_format((float)$r['vote_average'], 1, '.', '')); ?>
       </span></a>
-      <span class="title-buttons">
+     <a href="#"> <span class="title-buttons">
 
-        <a href="#">Watch Later</a>
-      </span>
+        Watch Later
+      </span></a>
 
     </div>
     <!-- //Top Tile END -->
@@ -198,12 +198,12 @@ foreach ($r['credits']['crew'] as $crew) {
                     <br>
                     <p>
                     <ul>
-                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><?= $director; ?> </li>
+                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><a href="#"><?= $director; ?></a> </li>
                       <!-- <li><b><i class="fa fa-pencil" aria-hidden="true"></i> Writer:</b>
                         <?php echo $writer; ?> </li> -->
-                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b> <?= date_format($date, "j M Y"); ?></li>
-                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b> <?= $r['production_countries'][0]['name']  ?></li>
-                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><?= $r['spoken_languages'][0]['english_name'] ?></li>
+                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b><a href="#"> <?= date_format($date, "j M Y"); ?></a></li>
+                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b><a href="#"> <?= $r['production_countries'][0]['name']  ?></a></li>
+                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><a href="#"><?= $r['spoken_languages'][0]['english_name'] ?></a></li>
                     </ul>
                     </p>
 
