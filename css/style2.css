@@ -1,0 +1,239 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    background-color: #ffffff;
+}
+*{
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.4);
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.logo img{
+    height: 50px; 
+}
+nav .Menu{
+display: flex;
+}
+nav .Menu li a{
+    height: 40px;
+    line-height: 43px;
+    margin: 0px;
+    padding: 0px 30px;
+    display: flex;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #080808;
+    letter-spacing: 1px;
+}
+.search{
+    height: 40px;
+    width: 150px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: opx 20px;
+}
+.search input{
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    }
+    ::placeholder{
+        color:indigo;
+        font-style: bold;
+    }
+nav .Menu li a:hover{
+    background-color: #242424;
+    color: antiquewhite;
+    box-shadow: 5px 10px 30px rgba(34, 31, 31, 0.959);
+    transition: all ease 0.2s;
+}
+#main{
+    padding-top: 80px;
+    background-color:white;
+    height: 388px;
+}
+#main2,#rm,#ac,#ani,#hr{
+    /* background-color: white; */
+}
+
+.showcase-box{
+    width: 430px;
+    height: 250px;
+    box-shadow: 5px 15px 30px rgba(236, 236, 236, 0.959);
+    border-radius:10px ;
+    margin: 0px 20px 10px 20px;
+    overflow: hidden;
+   
+}
+.showcase-box img{
+    width: 100%;
+    height: 100%;
+    object-position: top;
+    object-fit: cover;
+    display: flex;
+}
+.showcase-heading,#rm,#ac,#ani,#hr{
+    padding-left: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin: 30px 30px 0px 30px;
+    font-size: 1.3rems;
+}
+.cs-hidden{
+    overflow: visible !important;
+}
+#latest{
+    border-top: 1px solid rgba(34, 31, 31, 0.959);
+    background-color: lavenderblush;
+}
+.latest-heading{
+        margin: 30px 30px 0px 0px;
+        font-style: italic;
+        font-size: 1.5rem;
+       font-family: var(--heading) ;
+}
+.latest-b0x{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px,2px,30px,rgba(0, 0, 0, 0.3);
+    margin: 20px 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 200px;
+    background-color:bisque ;
+}
+.latest-b-img{
+    width: 240px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,1);
+    
+    position:relative;
+    overflow: hidden;
+    /* height: 444px; */
+    aspect-ratio: auto 526 / 789;
+}
+.latest-b-img img{
+    width:100%;
+}
+.latest-b-text strong{
+    color: #3a3a3a;
+    margin: 0px;
+}
+.latest-b-text{
+    position: absolute;
+    top: 40vh;
+    width: 100%;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    
+    flex-direction: column;
+   
+    background-color: rgba(31, 31, 31, 0.486);
+}
+.action h2{
+    margin: 0px 30px 0px 30px;
+    font-weight: 500;
+    font-size: 1.3rems;
+    background-color: white;
+}
+
+#ac-list,#ani-list,#rm-list,#hr-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10%;
+    justify-content: space-evenly;
+    
+}
+.movie{
+    width: 250px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,1);
+    background-color: var(--secondary-color);
+    position:relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+.movie img{
+    width:100%;
+}
+
+.movie-info{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+.movie-info h3{
+    margin-top: 0;
+}
+
+.movie-info span{
+    background-color: black;
+    padding: 0,25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.movie-info span.black{
+    color:black;
+}
+
+
+.overview{
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(34, 34, 34, 0.521);
+  font-size: 14px;
+   padding: 1em;
+   max-height: 100%;
+   transform: translateY(101%);
+   transition:transform 0.5s ease;
+}
+
+.movie:hover .overview{
+   transform:translateY(0);
+}
+.movie:hover{
+    transform: scale(1.1);
+}
+.movie:hover .movie-info{
+    opacity: 0;
+}

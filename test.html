@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<style>
+.big-poster{
+    height: 90vh;
+    transition: 0.5s ease;
+    position: relative;
+}
+.n{
+opacity: 1;
+position: absolute;
+-webkit-transition: 1s;
+
+}
+.visible{
+    display: unset;
+    position: absolute;
+    top: 90vh;
+    
+    -webkit-transition: 1s;
+}
+.not{
+    opacity: 0;
+    position: absolute;
+    -webkit-transition: 1s;
+}
+.n1{
+    
+    position: absolute;
+    -webkit-transition: 1s;;
+}
+#btn1:focus .nowp{
+display: none;
+transition: 0.5s ease;
+}
+
+.popular-info{
+    position: absolute;
+    top: -99vh;
+    transition: 0.5s ease;
+}
+.container{
+    -webkit-transition:1s;
+}
+</style>
+<script>
+    $('.b1').on('click', function() {
+console.log('worked')
+  $('.n').toggleClass('visible');
+  $('.n1').toggleClass('not');
+});
+
+function change2(){
+    var element = document.getElementById("p1");
+    var element2 = document.getElementById("p2");
+
+
+    console.log('worked 2')
+    element2.classList.toggle('visible');
+    element.classList.toggle('not');
+}
+
+
+
+</script>
+<body>
+    <button class="b1" id="btn1" >CLICK ME</button>
+    <button  class="b2" id="btn2" onclick="change2()">CLICK ME 2</button>
+    <div class="container" style="position: relative;">
+        <div class="n" id="p1">
+        
+        <div class="big-poster">
+<img src="img/backdrop2.jpg" alt="">
+
+        </div>
+        <div class="popular">
+            <div class="popular-info">
+                <h1>A Quite Place 2</h1>
+                <h3>The Game has just begin</h3>
+                <div class="pop-sum">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cum reiciendis sed magnam
+                        consequatur ducimus expedita voluptatum sols expedita voluptatum sols expedita voluptatum soluta optio dolorum.
+                    </p>
+                </div>
+                <button class="readmore button--pandora" type="button">Read Info </button>
+            </div>
+
+
+
+
+        </div>
+        </div>
+        <div class="n1" id="p2">
+        
+                <div class="big-poster" style="background-image: url('img/backdrop3.jpg');" >
+                    <img src="img/backdrop4.jpg" alt="">
+                </div>
+            <div class="popular">
+                <div class="popular-info">
+                    <h1>Peaky Blinders</h1>
+                    <h3>Put on a happy face</h3>
+                    <div class="pop-sum">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cum reiciendis sed magnam
+                            consequatur ducimus expedita voluptatum soluta optio dolorum.
+                        </p>
+                    </div>
+                    <button class="readmore button--pandora" type="button">Read Info </button>
+                </div>
+    
+    
+    
+    
+            </div>
+            </div>
+
+
+
+    </div>
+</body>
+</html>
