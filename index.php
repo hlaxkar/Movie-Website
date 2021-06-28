@@ -118,10 +118,10 @@ $imgbase = 'https://image.tmdb.org/t/p/';
                                     <div class="card-info">
 
                                         <button role="button" href="#" class="card-button card-watched">
-                                            <i class="fa fa-check" aria-hidden="true"></i>Seen
+                                            <i class="fa fa-check" aria-hidden="true"></i><span> Seen</span>
                                         </button>
-                                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i> Add to
-                                            List</button>
+                                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i> <span>Add to
+                                            List </span></button>
 
                                         <div class="latest-b-text">
                                             Star Wars
@@ -160,6 +160,21 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
         <div class="movie"><a href="movie.php?q1=<?= $pop['id']?>" target="_blank_">
             <img src="<?=$imgbase.'w500'.$pop['poster_path']?>" alt="Image">
+            <button role="button" href="#" class="card-button card-watched">
+                            <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
+                        </button>
+                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i><span> Add to
+                            List</span></button>
+                    
+                    
+              <div class="card-rate">
+                  <div class="ratings">
+                      <div class="imdb rating">
+                          <i class="fa fa-imdb" aria-hidden="true"></i>
+                      </div>
+                  </div>
+              </div>
+            
             <div class="movie-info">
                 <h3><?=$pop['title']?></h3>
                 <span class="green"><?php echo (number_format((float)$pop['vote_average'], 1, '.', '')); ?></span>

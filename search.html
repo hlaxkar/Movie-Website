@@ -7,90 +7,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link rel="stylesheet" href="css/main.css">
-   
-    <link rel="stylesheet" href="css/style.css">   
+
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/63ad159168.js" crossorigin="anonymous"></script>
- <link rel="stylesheet" href="css/search.css">   </head>
+    <link rel="stylesheet" href="css/search.css">
+
+
+</head>
 
 <body>
-    <!-- <nav class="navbar">
-        <span class="logo">LOGO</span>
-        <span class="searchbar"><form action="?" method="get">
-            <input type="text" class="Search fa" name="q1" id="q1" placeholder="&#xF002;  Search Movie" id="Search">
-          
-        </form></span>
-    </nav> -->
+ <div class="nav-header">
+<a href="index.php">
+<div class="nav-logo"></div>
+</a>
+<div class="nav-links">
+<div class="nav-link-div">
+    <a href="#" class="nav-link-a">
+    <span class="nav-link-span">
+TV Shows
+    </span>
+</a>
+</div>
+
+
+
+<div class="nav-link-div">
+    <a href="#" class="nav-link-a">
+    <span class="nav-link-span">
+Movies
+    </span>
+</a>
+</div>
+
+
+
+<div class="nav-link-div">
+    <a href="#" class="nav-link-a">
+    <span class="nav-link-span">
+Your Lists
+    </span>
+</a>
+</div>
+
+
+
+<div class="nav-link-div">
+    <a href="#" class="nav-link-a">
+    <span class="nav-link-span">
+Popular
+    </span>
+</a>
+</div>
+
+</div>
+
+<div class="nav-spacer"></div>
+
+<div class="nav-login-block">
+<span class="login"><a href="login.php">Login/Signup</a></span>
+</div>
+<div class="nav-globalsearch">
+<div class="nav-search">
+    <form action="?" method="GET" id="form">
+        <input type="text" name="q1" id="search" class="searchbox">
+
+    </form>
+</div>
+
+</div>
+</div>
+
+
 
     <div class="search-container">
-        <div class="filters">
-            <select name="genre" id="">
-                <option value="">Action</option>
-                <option value="">Comedy</option>
-                <option value="">Romance</option>
-                <option value="">Sci-fi</option>
-                <option value="">Thriller</option>
-                <option value="">Horror</option>
-                <option value="">Anime</option>
-
-            </select>
-            <select name="genre" id="">
-                <option value="">Action</option>
-                <option value="">Comedy</option>
-                <option value="">Romance</option>
-                <option value="">Sci-fi</option>
-                <option value="">Thriller</option>
-                <option value="">Horror</option>
-                <option value="">Anime</option>
-
-            </select>
-            <select name="genre" id="">
-                <option value="">Action</option>
-                <option value="">Comedy</option>
-                <option value="">Romance</option>
-                <option value="">Sci-fi</option>
-                <option value="">Thriller</option>
-                <option value="">Horror</option>
-                <option value="">Anime</option>
-
-            </select>
+        <div class="query">
+            Movies Found for: &nbsp  'John Wick'
         </div>
-        <div class="results">
+        <!-- <div class="filters">
+            <select name="genre" id="">
+                <option value="">Action</option>
+                <option value="">Comedy</option>
+                <option value="">Romance</option>
+                <option value="">Sci-fi</option>
+                <option value="">Thriller</option>
+                <option value="">Horror</option>
+                <option value="">Anime</option>
+
+            </select>
+            <select name="genre" id="">
+                <option value="">Action</option>
+                <option value="">Comedy</option>
+                <option value="">Romance</option>
+                <option value="">Sci-fi</option>
+                <option value="">Thriller</option>
+                <option value="">Horror</option>
+                <option value="">Anime</option>
+
+            </select>
+            <select name="genre" id="">
+                <option value="">Action</option>
+                <option value="">Comedy</option>
+                <option value="">Romance</option>
+                <option value="">Sci-fi</option>
+                <option value="">Thriller</option>
+                <option value="">Horror</option>
+                <option value="">Anime</option>
+
+            </select>
+        </div> -->
+        <div class="results" id="results">
 
             <div class="search-card">
+                <a href="movie.php">
+                    <div class="movie-img">
 
-                <div class="movie-img">
-                    <img src="img/pos1.jpg" alt="poster">
-                </div>
-                <div class="search-details">
-                    <h3>Shawshank Redemption</h4>
-                        <span>2019</span> <span>7.4</span>
-                </div>
+
+
+                        <img src="img/pos1.jpg" alt="poster">
+                        <div class="card-rate">
+
+                            <div class="card-ratings  ">
+                                <img src="img/IMDB.svg" alt="IMDB">
+                                <span>
+                                    <b>7.0</b>/10</span>
+
+                            </div>
+
+
+                        </div>
+                        <button role="button" href="#" class="card-button card-watched">
+                            <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
+                        </button>
+                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus"
+                                aria-hidden="true"></i><span> Add to
+                                List</span>
+                        </button>
+
+
+                    </div>
+                    <span class="card-name">
+                        Shawshank Redemption (2019)
+                    </span>
+                </a>
             </div>
             <div class="search-card">
+                <a href="movie.php">
+                    <div class="movie-img">
 
-                <div class="movie-img">
-                    <img src="img/john2.jpg" alt="poster">
-                </div>
-                <div class="search-details">
-                    <h3>Shawshank Redemption</h4>
-                        <span>2019</span> <span>7.4</span>
-                </div>
+
+
+                        <img src="img/pos1.jpg" alt="poster">
+                        <div class="card-rate">
+
+                            <div class="card-ratings  ">
+                                <img src="img/IMDB.svg" alt="IMDB">
+                                <span>
+                                    <b>7.0</b>/10</span>
+
+                            </div>
+
+
+                        </div>
+                        <button role="button" href="#" class="card-button card-watched">
+                            <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
+                        </button>
+                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus"
+                                aria-hidden="true"></i><span> Add to
+                                List</span>
+                        </button>
+
+
+                    </div>
+                    <span class="card-name">
+                        Shawshank Redemption (2019)
+                    </span>
+                </a>
             </div>
             <div class="search-card">
+                <a href="movie.php">
+                    <div class="movie-img">
 
-                <div class="movie-img">
-                    <img src="img/pos2.jpg" alt="poster">
-                </div>
-                <div class="search-details">
-                    <h3>Shawshank Redemption</h4>
-                        <span>2019</span> <span>7.4</span>
-                </div>
+
+
+                        <img src="img/pos1.jpg" alt="poster">
+                        <div class="card-rate">
+
+                            <div class="card-ratings  ">
+                                <img src="img/IMDB.svg" alt="IMDB">
+                                <span>
+                                    <b>7.0</b>/10</span>
+
+                            </div>
+
+
+                        </div>
+                        <button role="button" href="#" class="card-button card-watched">
+                            <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
+                        </button>
+                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus"
+                                aria-hidden="true"></i><span> Add to
+                                List</span>
+                        </button>
+
+
+                    </div>
+                    <span class="card-name">
+                        Shawshank Redemption (2019)
+                    </span>
+                </a>
             </div>
-
+          
         </div>
     </div>
 
-
+    <script src="js/search-script.js"></script>
 </body>
 
 </html>

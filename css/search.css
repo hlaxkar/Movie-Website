@@ -1,11 +1,11 @@
 .search-container{
-    
-    margin: 0 15%;
+    /* background-color: #0b151a; */
+    margin: 80px 64px;
 position: relative;
 
 }
 body{
-    background-color: #0b151a;
+    background-color: #000;
 }
 .filters{
     height: 60px;
@@ -39,8 +39,172 @@ option{
     aspect-ratio: auto 526 / 789;
 }
 .movie-img{
-    width: 250px;
+    width: 170px;
+    position: relative;
+    margin-bottom: 9px;
 }
+
 .search-card{
     margin: 0 20px;
+}
+.search-details{
+    padding: 10px;
+}
+
+
+.query{
+    padding: 20px 0;
+    font-family: 'Libre Franklin' ;
+font-weight: bold;
+}
+
+
+
+.nav-header{
+    height: 64px;
+    background-color: #081118;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px 30px 8px 64px;
+}
+.nav-logo{
+    background-size: contain;
+    background-repeat: no-repeat;
+    outline: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
+    width: 100px;
+    min-width: 100px;
+    height: 24px;
+    margin-right: 16px;
+    margin-bottom: 3.5px;
+    background-image: url(../img/logo.png);
+}
+.nav-links{
+    position: relative;
+    white-space: nowrap;
+}
+.nav-link-div{
+    position: relative;
+    display: inline-block;
+    position: static;
+    outline: none;
+}
+.nav-link-a{
+    font-family: 'TheArtist',Arial,sans-serif;
+    position: relative;
+    border-radius: 4px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: color 100ms,background-color 100ms;
+    transition: color 100ms,background-color 100ms;
+    padding: 8px 14px;
+    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    font-size: inherit;
+    margin-right: 4px;
+}
+.nav-link-span{
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+.nav-spacer{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    min-width: 16px;
+}
+.nav-login-block{
+    margin-right: 24px;
+}
+.nav-login-block a{
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: background-color 100ms;
+    transition: background-color 100ms;
+    padding: 8px 7px;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+.nav-globalsearch{
+    position: relative;
+    width: 288px;
+    background-image: linear-gradient(
+107deg
+, rgb(26, 48, 60), rgb(24, 55, 44));
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 119, 120);
+    align-self: baseline;
+    transition: max-height 160ms ease 0s, width 150ms ease-in-out 0s, border-color 100ms ease 0s;
+    z-index: 3;
+    overflow: hidden;
+    will-change: height, max-height;
+    top: unset;
+
+}
+.nav-search{
+    width: 100%;
+    height: 42px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 1px;
+    box-sizing: border-box;
+}
+.nav-search form{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.searchbox{
+    height: 100%;
+    width: calc(100% - 16px);
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    -webkit-letter-spacing: 0.2px;
+    -moz-letter-spacing: 0.2px;
+    -ms-letter-spacing: 0.2px;
+    letter-spacing: 0.2px;
+    background: none;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    margin-left: 14px;
+    overflow: hidden;
+    border-radius: 4px;
+    -webkit-transition: color 110ms;
+    transition: color 110ms;
 }
