@@ -7,11 +7,7 @@ function createurl($base, $movieDID = '550')
   $urls = array(
     'movie' => '/movie/' . $movieDID . '?',
     'similar' => '/movie/' . $movieDID . '/similar?',
-    'popular' => '/discover/movie?sort_by=popularity.desc&page=2&',
-    
-    'animation' => '/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=true&with_genres=16&page=3&',
-    'action' => '/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=true&with_genres=10751&page=2&',
-    'drama' => '/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=true&with_genres=53&page=4&',
+    'popular' => '/discover/movie?sort_by=popularity.desc&',
     'nowplaying' => '/movie/now_playing?',
     'latest' => '/movie/top_rated?',
     'toprated' => '/movie/top_rated?',

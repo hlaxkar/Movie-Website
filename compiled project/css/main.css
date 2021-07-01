@@ -1,4 +1,24 @@
+@font-face {
+    font-family: 'Njord';
+    src: url(../fonts/Njord-Regular.otf);
+}
+@font-face {
+    font-family: 'TheArtist';
+    src: url(../fonts/TheArtist-Sans.otf);
+}
+@font-face {
+    font-family: 'Alegreya-Sans-Medium';
+    src:url('../fonts/Alegreya-Sans-Medium.ttf.woff') format('woff'),
+        url('../fonts/Alegreya-Sans-Medium.ttf.svg#Alegreya-Sans-Medium') format('svg'),
+        url('../fonts/Alegreya-Sans-Medium.ttf.eot'),
+        url('../fonts/Alegreya-Sans-Medium.ttf.eot?#iefix') format('embedded-opentype'); 
+        font-weight: normal;
+        font-style: normal;
+}
+:root{
+    --heading : Helvetica Neue,Helvetica,Arial,sans-serif; 
 
+}
 .navbar{
     position: fixed;
     height: 60px;
@@ -266,18 +286,11 @@ transition: 0.2s ease;
     opacity: 1;
     
     }
- .movie-img:hover .card-add{
-        width: 110px;
-    }
-    .movie:hover .card-add{
+    .movie-img:hover .card-add{
         width: 110px;
     }
 
-
- .movie-img:hover .card-watched{
-        width: 90px;
-    }
-    .movie:hover .card-watched{
+    .movie-img:hover .card-watched{
         width: 90px;
     }
  .search-card:hover .card-name{

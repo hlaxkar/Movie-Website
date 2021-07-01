@@ -24,7 +24,6 @@ if ( isset( $_POST[ 'b2' ] ) && !empty( $_POST[ 'username' ] ) &&
 		
 
 		$_SESSION['username'] = $_POST['username'];
-		$_SESSION['uid'] = $numreg;
 	
         header( "location:../index.php" );
         exit();

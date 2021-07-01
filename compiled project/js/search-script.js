@@ -16,7 +16,7 @@ function getMovies(url){
 function showMovies(data){
     main.innerHTML= '';
     data.forEach(movie => {
-        const {title, poster_path, vote_average, id, release_date} = movie;
+        const {title, poster_path, vote_average, id} = movie;
         const movieE1  = document.createElement('div');
         movieE1.classList.add('search-card');
         movieE1.innerHTML = `        
@@ -48,7 +48,7 @@ function showMovies(data){
 
                     </div>
                     <span class="card-name">
-                    ${title} (${release_date.slice(0,4)})
+                    ${title} (2019)
                     </span>
                 </a>      
         

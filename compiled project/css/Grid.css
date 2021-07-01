@@ -1,0 +1,144 @@
+.container-1 {
+  display: grid;
+  grid-template-columns: 0.5fr 1.7fr 0.6fr;
+  
+  /* 0.7fr 1.7fr 0.6fr; */
+  grid-template-rows: 1.2fr 0.5fr 1fr;
+  
+  /* 1.2fr 0.8fr 1fr; */
+  gap: 5px 5px;
+  width: fit-content;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "PosterButton MovieDetails Watch-Options"
+    "PosterButton MovieDetails otherbutton"
+    "PosterButton Summery Summery";
+    gap: 20px;
+}
+
+.Summery {
+  grid-area: Summery;
+  padding: 20px 0;
+  border-top: 1px rgba(255, 255, 255, 0.651) solid;
+  
+}
+
+.Watch-Options {
+  grid-area: Watch-Options;
+}
+
+.PosterButton {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1.3fr 0.7fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Poster Poster Poster"
+    "Buttons Buttons Buttons"
+    "Commentbox Commentbox Commentbox";
+  grid-area: PosterButton;
+}
+
+.Poster {
+  border-radius: 10px;
+  grid-area: Poster;
+  
+  
+  width: 100%;
+  object-fit: contain;
+}
+.Poster img{
+  border-radius: 8px;
+}
+
+.Buttons {
+  grid-area: Buttons;
+  margin-top: 10px;
+  height: max-content;
+  gap: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  
+}
+
+
+.Commentbox {
+  background-color: #111;
+  grid-area: Commentbox;
+}
+
+.MovieDetails {
+  display: grid;
+  gap: 10px 0px;
+  
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 0.5fr 1.5fr;
+  grid-template-rows: 0.5fr 0.7fr 2.8fr; /*0.5fr 0.7fr 1.8fr;*/
+  grid-template-areas:
+    "TitleDetails TitleDetails TitleDetails"
+    "TitleDetails TitleDetails TitleDetails"
+    "Details Details Cast";
+  grid-area: MovieDetails;
+}
+
+.Details {
+  grid-area: Details;
+}
+
+.Cast {
+  grid-area: Cast;
+}
+
+.TitleDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0fr 0fr; /*1fr 1fr 1fr;*/
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "filmTitle filmTitle filmTitle"
+    "OneLine OneLine OneLine"
+    "Genres Genres Genres";
+  grid-area: TitleDetails;
+  
+}
+
+.filmTitle {
+  grid-area: filmTitle;
+  /* border-bottom: 1px rgba(255, 255, 255, 0.452) solid; */
+}
+
+.OneLine {
+  grid-area: OneLine;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  height: max-content;
+  text-shadow: #770808 2px 2px 0px;
+  border-bottom: 1px rgba(255, 255, 255, 0.452) solid;
+  color: #fcbe11;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.Genres {
+  padding-top: 12px;
+  padding-bottom: 12px; 
+  grid-area: Genres;
+  border-bottom: 1px rgba(255, 255, 255, 0.384) solid;
+}
+
+.otherbutton {
+  grid-area: otherbutton;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+  margin: 0;
+}
+

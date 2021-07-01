@@ -42,10 +42,8 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    
+    <title>Movie hub login page</title>
     <link rel="stylesheet" href="css/login.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
@@ -74,7 +72,7 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
     <div class="full-page">
             <div class="navigation-bar">
                 <div class="logo">
-                    <a href="index.php"><img src="img/logo3.png" alt=""></a>
+                    <a href='#'>ScreenDuck</a>
                 </div>
                 <nav>
                     <ul id='MenuItems'>

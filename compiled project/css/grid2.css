@@ -1,4 +1,4 @@
-.info-container {
+.container {
   display: grid;
   grid-template-columns: 20% auto;
   grid-template-rows: 1fr;
@@ -103,7 +103,7 @@ overflow: auto;
   padding: 10px;
 }
 
-html, body, .info-container {
+html, body, .container {
   height: 100%;
   margin: 0;
 }
