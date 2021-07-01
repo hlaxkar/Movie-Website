@@ -43,6 +43,7 @@ option {
 .results {
     margin-top: 30px;
     display: flex;
+    transition: 0.3s ease;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -61,6 +62,7 @@ option {
 }
 
 .search-card {
+    transition: 0.3s ease;
     margin: 20px 15px;
 }
 

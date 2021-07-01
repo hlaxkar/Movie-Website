@@ -24,7 +24,7 @@ flex-direction: column;
 
 padding: 10px;
 gap: 20px;
-margin-top: 10px;
+margin-top: 46px;
 
 }
 .comment-review{
@@ -44,12 +44,14 @@ min-height: 150px;
     color: whitesmoke;
     outline: none;
     overflow: auto;
+    border-radius: 15px;
     padding: 15px;
     font-size: medium;
     resize: none;
     }
     .comment-form{
         padding: 20px;
+        position: relative;
         margin-top: 20px;
     
     }
@@ -73,8 +75,15 @@ min-height: 150px;
     width: inherit;
 }
 .userscore{
+  margin: 0 20px;
+    padding: 10px 10px;
+    font-size: 17px;
+    font-weight: bold;
     float: right;
     
+}
+.userscore span i{
+  font-size: 14px;
 }
 .showmore{
    justify-content: center;
@@ -118,4 +127,86 @@ color: white;
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
+  }
+  table.unstyledTable {
+    width: 100%;
+    height: 200px;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.unstyledTable td, table.unstyledTable th {
+    padding: 2px 2px;
+  }
+  table.unstyledTable tfoot td {
+    font-size: 14px;
+  }
+  #q-title{
+    width: 100%;
+    background: #53535336;
+    color: whitesmoke;
+    outline: none;
+    overflow: auto;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: medium;
+    resize: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  }
+  #q-rating{
+    background: #53535336;
+    color: whitesmoke;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: medium;
+    height: 5vh;
+    border:0;
+      width:5vw;
+  }
+  #q-submit{
+    float: right;
+    border-radius: 27px;
+    border: 0;
+    background: var(--brand-color);
+    height: 4.5vh;
+    width: 7vw;
+    color: white;
+    font-family: 'Libre Franklin';
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  #q-submit:hover{
+      background-color:#c73e3e  ;
+  }
+  .blocker{
+    width: 100%;
+      position: absolute;
+      background-blend-mode: hue;
+      background: #00000070;
+      height: 100%;
+      backdrop-filter: blur(2px);
+  }
+  .blocker a{
+    margin-top: 8%;
+    font-size: 46px;
+    font-family: 'Njord';
+    text-align: center;
+    color: #fcbe11;
+    text-shadow: #770808 2px 3px 0px;
+    color: white;
+    display: block;
+  }
+ 
+  .review{
+    width: 100%;
+  }
+  .review p{
+    color: #929191;
+  }
+  .review span h2{
+    display: inline-block;
+  margin: 0px 0 10px;
   }
