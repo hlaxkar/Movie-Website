@@ -1,4 +1,4 @@
-# Movie-Website
+# Sceen Duck
 
 Building a Movie website as project for college using PHP.
 Data is fetched through TMDB API.
