@@ -848,3 +848,20 @@ body::-webkit-scrollbar-thumb
     font-weight:600
   }
 }
+
+.showmore{
+  justify-content: center;
+  padding-top: 15px;
+height: 50px;
+background-color: #1e1b268c;
+text-align: center;
+   width: 100%;
+   
+
+}
+.showmore-btn{
+text-decoration: none;
+margin-bottom: 10px;
+color: white;
+
+}

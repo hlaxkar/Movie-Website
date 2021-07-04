@@ -1,20 +1,24 @@
 const API_KEY = 'api_key=7432355f4f5f5ce12ec85408a877ac57&';
 const API_URL = 'https://api.themoviedb.org/3';
 const imgbase = 'https://image.tmdb.org/t/p/w500';
-const searchURL = API_URL + '/search/movie?'+API_KEY;
+const searchURL = API_URL + '/search/movie?'+API_KEY+'include_adult=true';
 const query = document.getElementById('query');
 const main = document.getElementById('results');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 
+page = 1;
+
 function getMovies(url){
     fetch(url).then(res => res.json()).then(data =>
         {   console.log(data.results)
+            main.innerHTML= '';
             showMovies(data.results);
+            page = 1;
         })}
 
 function showMovies(data){
-    main.innerHTML= '';
+    
     data.forEach(movie => {
         const {title, poster_path, vote_average, id, release_date} = movie;
         const movieE1  = document.createElement('div');
@@ -57,14 +61,36 @@ function showMovies(data){
         
         main.appendChild(movieE1);
     });
+    
 }        
 
 form.addEventListener('submit', (e) =>{
 e.preventDefault();
 const searchTerm = search.value;
-if(searchTerm){
+if(searchTerm){   
     query.innerHTML = `Movies Found for: &nbsp  '${searchTerm}'`
     getMovies(searchURL+'&query='+searchTerm);
+    window.history.pushState('search.php?q1='+url, searchTerm, 'search.php?q1='+url2);  
 }
 
 })
+
+
+function appendmovies(){
+    page++;
+    let term = '';
+    if(search.value){
+         term = search.value; }
+        else{
+            term = urlParams.get('q1');
+        }
+    query.innerHTML = `Movies Found for: &nbsp  '${term}'`;
+    getpageMovies(searchURL+'&query='+term+'&page='+page);
+    
+}
+function getpageMovies(url){
+    fetch(url).then(res => res.json()).then(data =>
+        {   console.log(data.results)
+            showMovies(data.results);
+        })}
+     

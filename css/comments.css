@@ -85,23 +85,6 @@ min-height: 150px;
 .userscore span i{
   font-size: 14px;
 }
-.showmore{
-   justify-content: center;
-   padding-top: 15px;
-height: 50px;
-background-color: #1e1b268c;
-text-align: center;
-    width: 100%;
-    
-
-}
-.showmore-btn{
-text-decoration: none;
-margin-bottom: 10px;
-color: white;
-
-}
-
 .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;

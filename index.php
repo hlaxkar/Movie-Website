@@ -38,6 +38,39 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
     <script src="js/JQuery3.3.1.js"></script>
     <script src="js/lightslider.js"></script>
+    <script>
+    function watched(movid) {
+
+      $.ajax({
+        url: 'php/insert-review.php',
+        type: 'post',
+        data: 'movid=' + movid + '&type=watched',
+        success: function(output) {
+          alert(output);
+        },
+        error: function() {
+          alert('something went wrong, rating failed');
+        }
+      });
+
+    }
+
+    function tolist(movid) {
+
+      $.ajax({
+        url: 'php/tolist.php',
+        type: 'post',
+        data: 'movid=' + movid + '&type=tolist',
+        success: function(output) {
+          alert(output);
+        },
+        error: function() {
+          alert('something went wrong, rating failed');
+        }
+      });
+
+    }
+  </script>
 </head>
 
 <body>
@@ -168,26 +201,27 @@ $imgbase = 'https://image.tmdb.org/t/p/';
                     <l1 class="item-a">
 
                         <div class="latest=box">
-                            <a href="movie.php?q1=<?= $lat['id'] ?>" target="_blank_">
+                            
                                 <div class="latest-b-img">
 
                                     <div class="card-info">
 
-                                        <button role="button" href="#" class="card-button card-watched">
+                                        <button role="button" href="#" class="card-button card-watched" onclick="watched(<?= $lat['id'] ?>); event.preventDefault();">
                                             <i class="fa fa-check" aria-hidden="true"></i><span> Seen</span>
                                         </button>
-                                        <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i> <span>Add to
-                                            List </span></button>
+                                        <button role="button" href="#" class="card-button card-add" onclick="tolist(<?= $lat['id'] ?>); event.preventDefault();"><i class="fa fa-plus" aria-hidden="true"></i> <span>Add to List </span></button>
 
                                         <div class="latest-b-text">
                                        <h4> <?= $lat['title'] ?></h4>
                                             <p><?= $lat['vote_average'] ?></p>
                                         </div>
                                     </div>
+                                    <a href="movie.php?q1=<?= $lat['id'] ?>" target="_blank_">
                                     <img src="<?= $imgbase . 'w500' . $lat['poster_path'] ?>">
+                                    </a>
                                 </div>
 
-                            </a>
+                           
                         </div>
 
                     </l1>
@@ -214,16 +248,17 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
         ?>
 
-            <div class="movie"><a href="movie.php?q1=<?= $pop['id'] ?>" target="_blank_">
-                    <img src="<?= $imgbase . 'w500' . $pop['poster_path'] ?>" alt="Image">
+            <div class="movie">
+                    
                    
-                    <button role="button" href="#" class="card-button card-watched">
+                    <button role="button" href="#" class="card-button card-watched" onclick="watched(<?= $pop['id'] ?>); event.preventDefault();">
                         <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
                     </button>
-                    <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i><span> Add to
-                            List</span></button>
-
-
+                    <button role="button" href="#" class="card-button card-add" onclick="tolist(<?= $pop['id'] ?>); event.preventDefault();">
+                        <i class="fa fa-plus" aria-hidden="true"></i><span> Add to List</span>
+                    </button>
+                    <a href="movie.php?q1=<?= $pop['id'] ?>" target="_blank">
+                    <img src="<?= $imgbase . 'w500' . $pop['poster_path'] ?>" alt="Image">
                    
 
                     <div class="movie-info">
@@ -255,18 +290,19 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
         ?>
 
-            <div class="movie"><a href="movie.php?q1=<?= $ani['id'] ?>" target="_blank_">
-                    <img src="<?= $imgbase . 'w500' . $ani['poster_path'] ?>" alt="Image">
-                   
-                    <button role="button" href="#" class="card-button card-watched">
+            <div class="movie">
+                    <button role="button" href="#" class="card-button card-watched" onclick="watched(<?= $ani['id'] ?>); event.preventDefault();">
                         <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
                     </button>
-                    <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i><span> Add to
-                            List</span></button>
+                    <button role="button" href="#" class="card-button card-add" onclick="tolist(<?= $ani['id'] ?>); event.preventDefault();">
+                        <i class="fa fa-plus" aria-hidden="true"></i><span> Add to List</span>
+                    </button>
 
 
                    
-
+                    <a href="movie.php?q1=<?= $ani['id'] ?>" target="_blank_">
+                    <img src="<?= $imgbase . 'w500' . $ani['poster_path'] ?>" alt="Image">
+                   
                     <div class="movie-info">
                         <h4><?= $ani['title'] ?></h4>
                         <span class="green"><?php echo (number_format((float)$ani['vote_average'], 1, '.', '')); ?></span>
@@ -294,17 +330,17 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
         ?>
 
-            <div class="movie"><a href="movie.php?q1=<?= $act['id'] ?>" target="_blank_">
-                    <img src="<?= $imgbase . 'w500' . $act['poster_path'] ?>" alt="Image">
-                   
-                    <button role="button" href="#" class="card-button card-watched">
+            <div class="movie">
+                    <button role="button" href="#" class="card-button card-watched" onclick="watched(<?= $act['id'] ?>); event.preventDefault();">
                         <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
                     </button>
-                    <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i><span> Add to
-                            List</span></button>
+                    <button role="button" href="#" class="card-button card-add" onclick="tolist(<?= $act['id'] ?>); event.preventDefault();">
+                        <i class="fa fa-plus" aria-hidden="true"></i><span> Add to List</span>
+                    </button>
 
 
-                   
+                    <a href="movie.php?q1=<?= $act['id'] ?>" target="_blank_">
+                    <img src="<?= $imgbase . 'w500' . $act['poster_path'] ?>" alt="Image">
 
                     <div class="movie-info">
                         <h4><?= $act['title'] ?></h4>
@@ -333,18 +369,18 @@ $imgbase = 'https://image.tmdb.org/t/p/';
 
         ?>
 
-            <div class="movie"><a href="movie.php?q1=<?= $drm['id'] ?>" target="_blank_">
-                    <img src="<?= $imgbase . 'w500' . $drm['poster_path'] ?>" alt="Image">
-                   
-                    <button role="button" href="#" class="card-button card-watched">
+            <div class="movie">
+                    <button role="button" href="#" class="card-button card-watched" onclick="watched(<?= $drm['id'] ?>); event.preventDefault();">
                         <i class="fa fa-check" aria-hidden="true"></i><span> Seen it</span>
                     </button>
-                    <button role="button" href="#" class="card-button card-add"><i class="fa fa-plus" aria-hidden="true"></i><span> Add to
-                            List</span></button>
+                    <button role="button" href="#" class="card-button card-add" onclick="tolist(<?= $drm['id'] ?>); event.preventDefault();">
+                        <i class="fa fa-plus" aria-hidden="true"></i><span> Add to List</span>
+                    </button>
 
 
                    
-
+                    <a href="movie.php?q1=<?= $drm['id'] ?>" target="_blank_">
+                    <img src="<?= $imgbase . 'w500' . $drm['poster_path'] ?>" alt="Image">
                     <div class="movie-info">
                         <h4><?= $drm['title'] ?></h4>
                         <span class="green"><?php echo (number_format((float)$drm['vote_average'], 1, '.', '')); ?></span>

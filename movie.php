@@ -204,7 +204,7 @@ $num = mysqli_num_rows($log);
             </div>
             <div class="Buttons">
               <a class="sidebuttons" onclick="watched(<?= $_GET['q1'] ?>); event.preventDefault();" href="#"><span><i class="fa fa-heart" style="color: #f7484f;" aria-hidden="true"></i>Watched</span></a>
-              <a class="sidebuttons" href="#" onclick="tolist(<?= $_GET['q1'] ?>); event.preventDefault();""><span><i class=" fa fa-plus" aria-hidden="true"></i> Add to list</span></a>
+              <a class="sidebuttons" href="#" onclick="tolist(<?= $_GET['q1'] ?>); event.preventDefault();"><span><i class=" fa fa-plus" aria-hidden="true"></i> Add to list</span></a>
               <a class="sidebuttons" href="#"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> </span>Translate</a>
 
             </div>
@@ -226,13 +226,11 @@ $num = mysqli_num_rows($log);
                     <h2>Details</h2>
                     <br>
                     <p>
-                    <ul>
-                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><a href="#"><?= $director; ?></a> </li>
+                    <ul> <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><a href="#"><?php if(isset($director)){ echo $director;}else{ echo 'NA';} ?></a> </li>
 
-                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b><a href="#"> <?= date_format($date, "j M Y"); ?></a></li>
-                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b><a href="#"> <?= $r['production_countries'][0]['name']  ?></a></li>
-                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><a href="#"><?= $r['spoken_languages'][0]['english_name'] ?></a></li>
-                    </ul>
+<li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b><a href="#"> <?php  if(isset($date)){echo date_format($date, "j M Y");}else{echo 'NA';} ?></a></li>
+<li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b><a href="#"> <?php if(isset( $r['production_countries'][0]['name'] )){ echo  $r['production_countries'][0]['name'] ;}else{ echo 'NA';} ?></a></li>
+<li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><a href="#"><?php if(isset($r['spoken_languages'][0]['english_name'])){ echo $r['spoken_languages'][0]['english_name'];}else{ echo 'NA';}  ?></a></li></ul>
                     </p>
 
                   </div>
@@ -240,12 +238,22 @@ $num = mysqli_num_rows($log);
                     <h2>Cast</h2>
                     <br>
                     <ul>
-                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][0]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][0]['name'] ?></li>
-                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][1]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][1]['name'] ?></li>
-                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][2]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][2]['name'] ?></li>
-                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][3]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][3]['name'] ?></li>
-                      <li> <span><img src="<?= $imgbase . $r['credits']['cast'][4]['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $r['credits']['cast'][4]['name'] ?></li>
-                    </ul>
+                      
+                    <?php
+                    $i=0;
+                    if(isset($r['credits']['cast'][0])){
+                    foreach($r['credits']['cast'] as $cast){
+                        if($i==5){
+                            break;
+                        }
+                    ?>
+                      <li> <span><img src="<?= $imgbase . $cast['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $cast['name'] ?></li>
+                      
+                      <?php $i++; }}else{ ?>
+                      
+                      <li><h3> No cast info available</h3></li>
+                      <?php } ?>
+                     </ul>
                   </div>
                 </div>
                 <div class="titlepart">

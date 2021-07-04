@@ -18,12 +18,11 @@ if (isset($_GET['q1']) && $_GET['q1'] != '') {
     <title>Search</title>
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/main.css">
-
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/63ad159168.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/search.css">
 
-    <script>
+<script>
     function watched(movid) {
 
       $.ajax({
@@ -55,7 +54,7 @@ if (isset($_GET['q1']) && $_GET['q1'] != '') {
       });
 
     }
-  </script>
+</script>
 </head>
 
 <body>
@@ -199,9 +198,16 @@ if (isset($_GET['q1']) && $_GET['q1'] != '') {
                         </span>
                     </a>
                 </div>
-            <?php } ?>
+            <?php } ?></div>
+        <a href="#" id="showmore" class="showmore-btn" onclick="event.preventDefault(); appendmovies(); " >
+            <div class="showmore">
 
-        </div>
+              <span>
+                <h4>Show More</h4>
+              </span>
+            </div>
+        </a>
+        
     </div>
 
     <script src="js/search-script.js"></script>
