@@ -226,11 +226,12 @@ $num = mysqli_num_rows($log);
                     <h2>Details</h2>
                     <br>
                     <p>
-                    <ul> <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><a href="#"><?php if(isset($director)){ echo $director;}else{ echo 'NA';} ?></a> </li>
-
-<li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b><a href="#"> <?php  if(isset($date)){echo date_format($date, "j M Y");}else{echo 'NA';} ?></a></li>
-<li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b><a href="#"> <?php if(isset( $r['production_countries'][0]['name'] )){ echo  $r['production_countries'][0]['name'] ;}else{ echo 'NA';} ?></a></li>
-<li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><a href="#"><?php if(isset($r['spoken_languages'][0]['english_name'])){ echo $r['spoken_languages'][0]['english_name'];}else{ echo 'NA';}  ?></a></li></ul>
+                    <ul>
+                      <li><b><i class="fa fa-video-camera" aria-hidden="true"></i> Director: </b><a href="#"><?php if (isset($director)) { echo $director; } else { echo 'NA';} ?></a> </li>
+                      <li><b><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Release Date: </b><a href="#"> <?php if (isset($date)) { echo date_format($date, "j M Y"); } else { echo 'NA'; } ?></a></li>
+                      <li><b><i class="fa fa-globe" aria-hidden="true"></i> Country: </b><a href="#"> <?php if (isset($r['production_countries'][0]['name'])) { echo  $r['production_countries'][0]['name']; } else { echo 'NA';} ?></a></li>
+                      <li><b><i class="fa fa-language" aria-hidden="true"></i> Language: </b><a href="#"><?php if (isset($r['spoken_languages'][0]['english_name'])) {echo $r['spoken_languages'][0]['english_name']; } else { echo 'NA'; }  ?></a></li>
+                    </ul>
                     </p>
 
                   </div>
@@ -238,22 +239,25 @@ $num = mysqli_num_rows($log);
                     <h2>Cast</h2>
                     <br>
                     <ul>
-                      
-                    <?php
-                    $i=0;
-                    if(isset($r['credits']['cast'][0])){
-                    foreach($r['credits']['cast'] as $cast){
-                        if($i==5){
+                      <?php
+                      $i = 0;
+                      if (isset($r['credits']['cast'][0])) {
+                        foreach ($r['credits']['cast'] as $cast) {
+                          if ($i == 5) {
                             break;
+                          }
+                      ?>
+                          <li> <span><img src="<?= $imgbase . $cast['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $cast['name'] ?></li>
+
+                        <?php $i++;
                         }
-                    ?>
-                      <li> <span><img src="<?= $imgbase . $cast['profile_path'] ?>" alt="img" onerror="this.onerror=null;this.src='img/user.png';"></span> <?= $cast['name'] ?></li>
-                      
-                      <?php $i++; }}else{ ?>
-                      
-                      <li><h3> No cast info available</h3></li>
+                      } else { ?>
+
+                        <li>
+                          <h3> No cast info available</h3>
+                        </li>
                       <?php } ?>
-                     </ul>
+                    </ul>
                   </div>
                 </div>
                 <div class="titlepart">
@@ -261,18 +265,12 @@ $num = mysqli_num_rows($log);
                     <h2><?php echo $r['original_title']; ?></h2>
                   </div>
                   <div class="OneLine"><?php echo $r['tagline']; ?></div>
-
                   <div class="Genres">
-
                     <i class="fa fa-eye" aria-hidden="true"></i>
-
-
                     <span class="vote-count">
                       <?php
-
                       echo (number_format($r['vote_count']));
                       ?>
-
                     </span>
                     <span>
                       <?php
@@ -283,12 +281,13 @@ $num = mysqli_num_rows($log);
                     <span>
                       <i class="fa fa-clock-o" aria-hidden="true"></i>
                       <?= $r['runtime'] . " min" ?>
-
                     </span>
                     <span>
-                      <i class="fa fa-star" aria-hidden="true"></i> <?= number_format((float)$r['vote_average'], 1, '.', ''); ?>
+                      <i class="fa fa-star" aria-hidden="true" style='color: #ffc83d;'></i> <?= number_format((float)$r['vote_average'], 1, '.', ''); ?>
                     </span>
-
+                    <?php if($r['adult']=='true'){?>
+                      <span>Adult</span>
+                      <?php }?>
                   </div>
 
 
@@ -321,27 +320,31 @@ $num = mysqli_num_rows($log);
         <div class="suggestions">
           <?php
           $simres = getData(createurl('similar', $movieID));
+          if (isset($simres['results'][0])) {
 
+            $i = 0;
 
-          $i = 0;
-          foreach ($simres['results'] as $s) {
-            if ($i == 6) {
-              break;
-            }
+            foreach ($simres['results'] as $s) {
+              if ($i == 6) {
+                break;
+              }
 
           ?>
-            <a href="movie.php?q1=<?= $s['id'] ?>">
-              <div class="similarposters">
-                <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="">
-                <div class="caption"> <?php echo ($s['title']); ?>
+              <a href="movie.php?q1=<?= $s['id'] ?>">
+                <div class="similarposters">
+                  <img src=<?php echo ('"https://image.tmdb.org/t/p/w500' . $s['poster_path'] . '"') ?> alt="poster" srcset="" onerror="this.onerror=null;this.src='img/default_poster.jpg';">
+                  <div class="caption"> <?php echo ($s['title']); ?>
 
-                  <span><?php echo (number_format((float)$s['vote_average'], 1, '.', '')); ?></span>
+                    <span><?php echo (number_format((float)$s['vote_average'], 1, '.', '')); ?></span>
+                  </div>
+
                 </div>
-
-              </div>
-            </a>
+              </a>
           <?php
-            $i++;
+              $i++;
+            }
+          } else {
+            echo '<h3>No similar movies found </h3>';
           }
 
           ?>
@@ -381,7 +384,7 @@ $num = mysqli_num_rows($log);
                 </tr>
                 <tr>
                   <td><label for="q-rate">Your Rating:</label></td>
-                  <td><input type="number" maxlength="10" minlength="0" id="q-rating" name="q-rating" placeholder="0"> / 10
+                  <td><input type="number" max="10" min="0" id="q-rating" name="q-rating" placeholder="0"> / 10
                   </td>
                 </tr>
                 <tr>
@@ -476,108 +479,108 @@ $num = mysqli_num_rows($log);
         </div>
       </div>
     </div>
+  </div>
+  <div id="expandimage" class="modal">
 
-    <div id="expandimage" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
 
-      <!-- The Close Button -->
-      <span class="close">&times;</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
 
-      <!-- Modal Content (The Image) -->
-      <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
 
-      <!-- Modal Caption (Image Text) -->
-      <div id="caption"></div>
+
+
+  <script>
+    let button = document.querySelector('.button');
+    let testA = document.querySelector('.a');
+    let backgroundButton = document.querySelector('.background__button');
+
+    button.addEventListener('mouseenter', function() {
+      testA.classList.add('is-white')
+      backgroundButton.classList.add('is-hover');
+    });
+
+    button.addEventListener('mouseleave', function() {
+      testA.classList.remove('is-white')
+      backgroundButton.classList.remove('is-hover');
+    });
+
+
+
+
+    // Get the modal
+    var modal = document.getElementById("expandimage");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var overlay = document.getElementById('overlay');
+    var img = document.getElementById("poster");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    overlay.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
+
+  <footer class="bootstrap-wrapper site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">ScreenDuck.com is a Movie & TV show Tracking Website.
+            That lets you keep track of every film you've watched.
+            Members can rate films, write and share reviews and follow friends and other members to read theirs.
+            Compile and share lists of films on any topic and keep a watchlist of films to see.
+          </p>
+        </div>
+
+
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Contribute</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
     </div>
-
-
-
-    <script>
-      let button = document.querySelector('.button');
-      let testA = document.querySelector('.a');
-      let backgroundButton = document.querySelector('.background__button');
-
-      button.addEventListener('mouseenter', function() {
-        testA.classList.add('is-white')
-        backgroundButton.classList.add('is-hover');
-      });
-
-      button.addEventListener('mouseleave', function() {
-        testA.classList.remove('is-white')
-        backgroundButton.classList.remove('is-hover');
-      });
-
-
-
-
-      // Get the modal
-      var modal = document.getElementById("expandimage");
-
-      // Get the image and insert it inside the modal - use its "alt" text as a caption
-      var overlay = document.getElementById('overlay');
-      var img = document.getElementById("poster");
-      var modalImg = document.getElementById("img01");
-      var captionText = document.getElementById("caption");
-      overlay.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-        captionText.innerHTML = img.alt;
-      }
-
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-    </script>
-
-    <footer class="bootstrap-wrapper site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>About</h6>
-            <p class="text-justify">ScreenDuck.com is a Movie & TV show Tracking Website.
-              That lets you keep track of every film you've watched.
-              Members can rate films, write and share reviews and follow friends and other members to read theirs.
-              Compile and share lists of films on any topic and keep a watchlist of films to see.
-            </p>
-          </div>
-
-
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Quick Links</h6>
-            <ul class="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Contribute</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Sitemap</a></li>
-            </ul>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+            <a href="#">ScreenDuck</a>.
+          </p>
         </div>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-              <a href="#">ScreenDuck</a>.
-            </p>
-          </div>
 
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="github" href="https://github.com/hlaxkar"><i class="fa fa-github"></i></a></li>
-              <li><a class="linkedin" href="https://www.linkedin.com/in/hlaxkar/"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-          </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="github" href="https://github.com/hlaxkar"><i class="fa fa-github"></i></a></li>
+            <li><a class="linkedin" href="https://www.linkedin.com/in/hlaxkar/"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
 </body>
 

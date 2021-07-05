@@ -6,7 +6,8 @@ const query = document.getElementById('query');
 const main = document.getElementById('results');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 page = 1;
 
 function getMovies(url){
@@ -67,10 +68,13 @@ function showMovies(data){
 form.addEventListener('submit', (e) =>{
 e.preventDefault();
 const searchTerm = search.value;
-if(searchTerm){   
+if(searchTerm){
+    url = urlParams.get('q1');   
+    
+    
     query.innerHTML = `Movies Found for: &nbsp  '${searchTerm}'`
     getMovies(searchURL+'&query='+searchTerm);
-    window.history.pushState('search.php?q1='+url, searchTerm, 'search.php?q1='+url2);  
+    window.history.pushState('search.php?q1='+url, searchTerm, 'search.php?q1='+searchTerm);  
 }
 
 })
