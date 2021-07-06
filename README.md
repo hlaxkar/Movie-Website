@@ -21,11 +21,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -34,7 +30,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/hlaxkar/screenduck">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">ScreenDuck</h3>
@@ -85,8 +81,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+![image]
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![ScreenDuck Screen Shot][(https://user-images.githubusercontent.com/26454395/124645431-0d617300-deb1-11eb-845c-b13d922af82c.png)]](http://www.screenduck.tk)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -95,9 +92,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Php]()
+* [TMDB]()
+* [Javascript]()
 
 
 
@@ -170,14 +167,6 @@ Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
 Project Link: [https://github.com/hlaxkar/screenduck](https://github.com/hlaxkar/screenduck)
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 
