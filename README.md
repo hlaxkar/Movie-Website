@@ -22,7 +22,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/hlaxkar/]
 
 
 
@@ -30,7 +30,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/hlaxkar/screenduck">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo3.png" alt="Logo" width="150">
   </a>
 
   <h3 align="center">ScreenDuck</h3>
