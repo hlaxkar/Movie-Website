@@ -83,11 +83,9 @@
 ## About The Project
 ![image]
 
-[![ScreenDuck Screen Shot][(https://user-images.githubusercontent.com/26454395/124645431-0d617300-deb1-11eb-845c-b13d922af82c.png)]](http://www.screenduck.tk)
+[![ScreenDuck Screen Shot]['https://user-images.githubusercontent.com/26454395/124645431-0d617300-deb1-11eb-845c-b13d922af82c.png']](http://www.screenduck.tk)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+
 
 
 ### Built With
