@@ -22,7 +22,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/hlaxkar/]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
