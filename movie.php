@@ -153,7 +153,7 @@ $num = mysqli_num_rows($log);
           </div>
         <?php  } else { ?>
 
-          <a href="login.php"> Login/Signup</a>
+          <a href="login.php?movie=<?= $r['id']?>"> Login/Signup</a>
 
         <?php } ?>
 
@@ -380,16 +380,16 @@ $num = mysqli_num_rows($log);
               <tbody>
                 <tr>
                   <td><label for="q-title">One Line:</label></td>
-                  <td><input type="text" value="" placeholder="Enter Title" name="q-title" id="q-title"></td>
+                  <td><input type="text" value="" placeholder="Enter Title" name="q-title" id="q-title" required></td>
                 </tr>
                 <tr>
                   <td><label for="q-rate">Your Rating:</label></td>
-                  <td><input type="number" max="10" min="0" id="q-rating" name="q-rating" placeholder="0"> / 10
+                  <td><input type="number" max="10" min="0" id="q-rating" name="q-rating" placeholder="0" required> / 10
                   </td>
                 </tr>
                 <tr>
                   <td><label for="q-review">Your view of the movie:</label></td>
-                  <td><textarea id="q-review" name="comment" id="" cols="30" rows="5" class="comment-box" placeholder="Enter your Review of the movie"></textarea></td>
+                  <td><textarea id="q-review" name="comment" id="" cols="30" rows="5" class="comment-box" required placeholder="Enter your Review of the movie"></textarea></td>
                 </tr>
               </tbody>
             </table>

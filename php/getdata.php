@@ -6,7 +6,7 @@ function createurl($base, $movieDID = '550')
   $API_URL = 'https://api.themoviedb.org/3';
   $urls = array(
     'movie' => '/movie/' . $movieDID . '?',
-    'similar' => '/movie/' . $movieDID . '/similar?&include_adult=true&',
+    'similar' => '/movie/' . $movieDID . '/similar?&include_adult=false&',
     'popular' => '/discover/movie?sort_by=popularity.desc&page=2&',
     
     'animation' => '/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=true&with_genres=16&page=3&',
@@ -22,7 +22,7 @@ if ($base == 'movie'){
 return $url;
 }
 elseif($base == 'search'){
-  $url =  $API_URL . $urls[$base] . $API_KEY .'&query='.$movieDID.'&include_adult=true';
+  $url =  $API_URL . $urls[$base] . $API_KEY .'&query='.$movieDID.'&include_adult=false';
   return $url;
 }
 else{

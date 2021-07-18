@@ -1,7 +1,7 @@
 const API_KEY = 'api_key=7432355f4f5f5ce12ec85408a877ac57&';
 const API_URL = 'https://api.themoviedb.org/3';
 const imgbase = 'https://image.tmdb.org/t/p/w500';
-const searchURL = API_URL + '/search/movie?'+API_KEY+'include_adult=true';
+const searchURL = API_URL + '/search/movie?'+API_KEY+'include_adult=false';
 const query = document.getElementById('query');
 const main = document.getElementById('results');
 const form = document.getElementById('form');

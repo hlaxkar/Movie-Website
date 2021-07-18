@@ -19,8 +19,15 @@ if (
     $_SESSION['uid'] = $row[0];
 
     $_SESSION['username'] = $row[1];
+	
+    if(isset($_GET['movie'])){
+         header("location:movie.php?q1=".$_GET['movie']);
 
- header("location:index.php");
+    }else{
+        header("location:index.php");
+    }
+
+
 
     exit();
   } else {

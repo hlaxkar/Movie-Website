@@ -865,3 +865,8 @@ margin-bottom: 10px;
 color: white;
 
 }
+.nav-link-div:hover {
+    border-bottom: 3px solid var(--brand-color);
+    transform: scale(1.05);
+}
+
