@@ -62,8 +62,6 @@
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
 Project Link: [https://github.com/hlaxkar/screenduck](https://github.com/hlaxkar/screenduck)
 
 
