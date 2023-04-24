@@ -81,10 +81,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![image]
-
-[![ScreenDuck Screen Shot]['https://user-images.githubusercontent.com/26454395/124645431-0d617300-deb1-11eb-845c-b13d922af82c.png']](http://www.screenduck.tk)
-
 
 
 
