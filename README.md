@@ -65,12 +65,10 @@ Once logged in, you can access the My Lists Page. This page displays the lists y
 ### Search Result Page
 When you search for a movie using the search bar, the Search Result Page displays a list of movies matching your query. You can click on a movie to view its detailed information on the Movie Detail Page.
 
-## Screenshots
 
-- Insert screenshots of the website here to visually demonstrate the various pages and features described above.
 
 ## UI Design
 
-The user interface (UI) design of ScreenDuck.com was created by [Your Name]. It follows a visually appealing and intuitive layout, with attention to typography, color schemes, and responsive design principles. The UI design enhances the user experience and ensures easy navigation throughout the website.
+The user interface (UI) design of ScreenDuck.com was created by Harshit Laxkar. It follows a visually appealing and intuitive layout, with attention to typography, color schemes, and responsive design principles. The UI design enhances the user experience and ensures easy navigation throughout the website.
 
 Note: To insert the actual screenshots and UI design, you can use the appropriate markdown syntax or HTML tags within your documentation.
