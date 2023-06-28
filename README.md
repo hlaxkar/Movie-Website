@@ -71,4 +71,3 @@ When you search for a movie using the search bar, the Search Result Page display
 
 The user interface (UI) design of ScreenDuck.com was created by Harshit Laxkar. It follows a visually appealing and intuitive layout, with attention to typography, color schemes, and responsive design principles. The UI design enhances the user experience and ensures easy navigation throughout the website.
 
-Note: To insert the actual screenshots and UI design, you can use the appropriate markdown syntax or HTML tags within your documentation.
